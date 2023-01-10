@@ -8,22 +8,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-
     steps:
     - uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Build
       run: |
         npm install
-        npm build
+        npm run build
 
     - name: deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
