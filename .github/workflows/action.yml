@@ -23,7 +23,7 @@ jobs:
         npm run build
 
     - name: deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@4.1.1
       with:
         # 发布到指定分支
         BRANCH: gh-pages
