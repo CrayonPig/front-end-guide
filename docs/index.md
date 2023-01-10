@@ -4,7 +4,7 @@ home: true
 heroText: 前端开发规范
 tagline: 使用过程中如碰到问题，请到Github进行提问
 actionText: 快速上手 →
-actionLink: /zh/guide/
+actionLink: /guide/
 features:
 - title: HTML规范
   details: 基于W3C、苹果开发者等官方文档，并结合团队日常业务需求以及团队在日常开发过程中总结提炼出的经验而约定。
