@@ -2,6 +2,7 @@
   "name": "front-end-guide",
   "version": "1.0.0",
   "description": "前端代码规范",
+  "homepage": "https://github.com/CrayonPig/front-end-guide",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs",
