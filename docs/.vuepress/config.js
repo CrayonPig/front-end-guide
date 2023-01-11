@@ -12,16 +12,26 @@ module.exports = {
     sidebar: [
       '/guide/',
       {
+        title: 'HTML代码规范',
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
+        children: [
+          '/html/',
+          '/html/write',
+          '/html/annotation',
+        ]
+      },
+      {
         title: '命名规范',   // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
-          '/guide/file-name.md',
+          '/name/file-name.md',
           '/guide/component-name.md',
-          '/guide/js-name.md'
+          '/name/js-name.md'
         ]
       },
-      '/guide/git'
+      '/git/'
     ]
   }
 }
