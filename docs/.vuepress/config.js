@@ -27,8 +27,18 @@ module.exports = {
         sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
           '/css/',
+          '/css/name',
           '/css/write',
           '/css/reset',
+        ]
+      },
+      {
+        title: '静态资源',
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
+        children: [
+          '/static/',
+          '/static/icon',
         ]
       },
       {
@@ -36,12 +46,20 @@ module.exports = {
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
-          '/name/file-name.md',
-          '/guide/component-name.md',
-          '/name/js-name.md'
+          '/guide/component-name',
+          '/name/js-name'
         ]
       },
-      '/git/'
+      {
+        title: 'Git规范',   // 必要的
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
+        children: [
+          '/git/',
+          '/git/commit',
+          '/git/options'
+        ]
+      },
     ]
   }
 }

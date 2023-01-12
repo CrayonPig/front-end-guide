@@ -1,5 +1,12 @@
 # 书写风格
+## HTML 文件名
 
+全部采用小写方式， 优先选择单个单词命名，多个单词命名以**下划线**分隔。
+
+```javascript
+|- error_report.html
+|- success_report.html
+```
 ## 代码缩进
 
 统一使用Tab（两个空格）进行代码缩进

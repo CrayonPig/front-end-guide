@@ -30,17 +30,6 @@ pic_people.jpg
 pic_TV.jpg
 ```
 
-## CSS 文件名
-
-全部采用小写方式， 优先选择单个单词命名，多个单词命名以**短横线**分隔。
-
-```javascript
-|- normalize.less
-|- base.less
-|- date-picker.scss
-|- input-number.scss
-```
-
 ## js/ts文件名
 
 全部采用小写方式， 优先选择单个单词命名，多个单词命名以**短横线**分隔。
