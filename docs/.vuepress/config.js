@@ -60,6 +60,15 @@ module.exports = {
           '/git/options'
         ]
       },
+      {
+        title: 'JS规范',   // 必要的
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
+        children: [
+          '/js/',
+          '/js/name',
+        ]
+      },
     ]
   }
 }
