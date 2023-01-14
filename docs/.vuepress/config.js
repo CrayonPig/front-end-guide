@@ -67,6 +67,9 @@ module.exports = {
         children: [
           '/js/',
           '/js/name',
+          '/js/more',
+          '/js/airbnb',
+          '/js/difference',
         ]
       },
     ]
