@@ -68,7 +68,6 @@ module.exports = {
           '/js/',
           '/js/name',
           '/js/more',
-          '/js/airbnb',
           '/js/difference',
         ]
       },

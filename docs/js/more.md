@@ -2988,37 +2988,217 @@ function foo() {
 }
 ```
 
-- `export default` 导出模块A，则这个文件名也叫 `A.*`， `import` 时候的参数也叫 `A`。 大小写完全一致。
+- 我们单纯的遵循每个语言的约定。在 JavaScript 中更自然的是 `camelCase`。而在 HTML 中则是 `kebab-case`。
 
+单文件组件的文件名应该始终是`kebab-case`
+
+业务中使用是`PascalCase`
+
+**没有内容的组件应该是自闭合的**
+
+```js
+components/
+|- my-component.vue
+
+import MyComponent from './components/my-component.vue'
+```
+
+```vue
+// 业务中使用 
+<MyComponent />
+<MyComponent>
+  <span>这是一个组件</span>
+</MyComponent>
+```
+
+-  当你 export-default 一个函数时，函数名用小驼峰，文件名需要和函数名一致。
 ```javascript
-// file 1 contents
-class CheckBox {
+function makeStyleGuide() {
   // ...
 }
-export default CheckBox;
 
-// file 2 contents
-export default function fortyTwo() { return 42; }
+export default makeStyleGuide;
+```
 
-// file 3 contents
-export default function insideDirectory() {}
+- 当你 export 一个结构体/类/单例/函数库/对象 时用大驼峰。
 
-// in some other file
+```javascript
+const AirbnbStyleGuide = {
+  es6: {
+  }
+};
+
+export default AirbnbStyleGuide;
+```
+
+- 简称和缩写应该全部大写或全部小写。
+
+> 为什么？名字都是给人读的，不是为了去适应计算机算法。
+
+```javascript
 // bad
-import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
-import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
-import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
+import SmsContainer from './containers/SmsContainer';
 
 // bad
-import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
-import forty_two from './forty_two'; // snake_case import/filename, camelCase export
-import inside_directory from './inside_directory'; // snake_case import, camelCase export
-import index from './inside_directory/index'; // requiring the index file explicitly
-import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
+const HttpRequests = [
+  // ...
+];
 
 // good
-import CheckBox from './CheckBox'; // PascalCase export/import/filename
-import fortyTwo from './fortyTwo'; // camelCase export/import/filename
-import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
-// ^ supports both insideDirectory.js and insideDirectory/index.js
+import SMSContainer from './containers/SMSContainer';
+
+// good
+const HTTPRequests = [
+  // ...
+];
+
+// also good
+const httpRequests = [
+  // ...
+];
+
+// best
+import TextMessageContainer from './containers/TextMessageContainer';
+
+// best
+const requests = [
+  // ...
+];
 ```
+
+- 你可以用全大写字母设置静态变量，他需要满足三个条件。
+
+1. 导出变量；
+2. 是 `const` 定义的， 保证不能被改变；
+3. 这个变量是可信的，他的子属性都是不能被改变的。
+
+  > 为什么？这是一个附加工具，帮助开发者去辨识一个变量是不是不可变的。UPPERCASE_VARIABLES 能让开发者知道他能确信这个变量（以及他的属性）是不会变的。
+
+  - 对于所有的 `const` 变量呢？ —— 这个是不必要的。大写变量不应该在同一个文件里定义并使用， 它只能用来作为导出变量。
+  - 那导出的对象呢？ —— 大写变量处在 `export` 的最高级(例如：`EXPORTED_OBJECT.key`) 并且他包含的所有子属性都是不可变的。（译者注：即导出的变量是全大写的，但他的属性不用大写）
+
+```javascript
+// bad
+const PRIVATE_VARIABLE = 'should not be unnecessarily uppercased within a file';
+
+// bad
+export const THING_TO_BE_CHANGED = 'should obviously not be uppercased';
+
+// bad
+export let REASSIGNABLE_VARIABLE = 'do not use let with uppercase variables';
+
+
+// ---
+
+// 允许但不够语义化
+export const apiKey = 'SOMEKEY';
+
+// 在大多数情况下更好
+export const API_KEY = 'SOMEKEY';
+
+// ---
+
+// bad - 不必要的大写键，没有增加任何语义
+export const MAPPING = {
+  KEY: 'value'
+};
+
+// good
+export const MAPPING = {
+  key: 'value'
+};
+```
+## Get-Set 访问器
+
+- 不需要使用属性的访问器函数。
+
+- 不要使用 JavaScript 的 getters/setters，因为他们会产生副作用，并且难以测试、维护和理解。相反的，你可以用 `getVal()` 和 `setVal('hello')` 去创造你自己的访问器函数。
+
+```javascript
+// bad
+class Dragon {
+  get age() {
+    // ...
+  }
+
+  set age(value) {
+    // ...
+  }
+}
+
+// good
+class Dragon {
+  getAge() {
+    // ...
+  }
+
+  setAge(value) {
+    // ...
+  }
+}
+```
+
+- 如果属性/方法是 `boolean`， 用 `isVal()` 或 `hasVal()`。
+
+```javascript
+// bad
+if (!dragon.age()) {
+  return false;
+}
+
+// good
+if (!dragon.hasAge()) {
+  return false;
+}
+```
+
+-  用 `get() ` 和 `set()` 函数是可以的，但是要一起用。
+
+```javascript
+class Jedi {
+  constructor(options = {}) {
+    const lightsaber = options.lightsaber || 'blue';
+    this.set('lightsaber', lightsaber);
+  }
+
+  set(key, val) {
+    this[key] = val;
+  }
+
+  get(key) {
+    return this[key];
+  }
+}
+```
+
+## 事件
+
+- 当传递数据载荷给事件时（不论是 DOM 还是像 Backbone 这样有很多属性的事件）。这使得后续的贡献者（程序员）向这个事件添加更多的数据时不用去找或者更新每个处理器。例如：
+
+```javascript
+// bad
+$(this).trigger('listingUpdated', listing.id);
+
+// ...
+
+$(this).on('listingUpdated', (e, listingID) => {
+  // do something with listingID
+});
+```
+
+prefer:
+
+```javascript
+// good
+$(this).trigger('listingUpdated', { listingID: listing.id });
+
+// ...
+
+$(this).on('listingUpdated', (e, data) => {
+  // do something with data.listingID
+});
+```
+
+## ECMAScript 5 兼容性
+
+- 参考 [Kangax](https://twitter.com/kangax/) 的 ES5 [兼容性列表](https://kangax.github.io/es5-compat-table/).
