@@ -2,7 +2,7 @@
 home: true
 # heroImage: /hero.png
 heroText: 前端开发规范
-tagline: 使用过程中如碰到问题，请到Github进行提问
+tagline: 致力于提供开箱即用的前端规范方案
 actionText: 快速上手 →
 actionLink: /guide/
 features:

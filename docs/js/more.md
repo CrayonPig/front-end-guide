@@ -1,7 +1,7 @@
 # 详细规范
 本规范以[eslint-config-airbnb](https://github.com/airbnb/javascript)为基础，结合团队自身情况，形成自己的规范。
 
-如已经很了解`eslint-config-airbnb`，只是想知道差异，可查看[差异](/js/difference.md)
+如果你已经很了解`eslint-config-airbnb`，只是想知道差异，可查看[差异](/js/difference.md)
 
 ## 类型
 

@@ -9,13 +9,17 @@
 
 业务中使用是`PascalCase`
 
+组件的实例用`camelCase`
+
 **没有内容的组件应该是自闭合的**
 
 ```js
 components/
 |- my-component.vue
 
-import MyComponent from './components/my-component.vue'
+import MyComponent from './components/my-component.vue';
+
+const myComponent = <MyComponent />;
 ```
 
 ```vue

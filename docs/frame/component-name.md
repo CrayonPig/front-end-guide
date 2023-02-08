@@ -20,12 +20,17 @@
 
 业务中使用是`PascalCase`
 
+组件的实例用`camelCase`
+
 **没有内容的组件应该是自闭合的**
+
 ```js
 components/
 |- my-component.vue
 
-import MyComponent from './components/my-component.vue'
+import MyComponent from './components/my-component.vue';
+
+const myComponent = <MyComponent />;
 ```
 
 ```vue
@@ -41,9 +46,9 @@ import MyComponent from './components/my-component.vue'
 
 ```vue
 <!-- bad -->
-<my-wx />
+<MyWX />
 <!-- good -->
-<my-weChat />
+<MyWeChat />
 ```
 
 ## 基础组件
@@ -52,10 +57,10 @@ import MyComponent from './components/my-component.vue'
 
 ```javascript
 components/
-|- BaseButton.vue
-|- BaseTable.vue
-|- BaseIcon.vue
-|- baseXXX.js
+|- base-button.vue
+|- base-table.vue
+|- base-icon.vue
+|- base-xxx.js
 ```
 
 这样做的几个好处：
@@ -67,7 +72,7 @@ components/
 - 因为这些组件会被频繁使用，所以你可能想把它们放到全局而不是在各处分别导入它们。使用相同的前缀可以让 webpack 这样工作：
 
   ```javascript
-  var requireComponent = require.context("./src", true, /Base[A-Z]\w+\.(vue|js)$/)
+  var requireComponent = require.context("./src", true, /base-[a-z]\w+\.(vue|js)$/)
   requireComponent.keys().forEach(function (fileName) {
     var baseComponentConfig = requireComponent(fileName)
     baseComponentConfig = baseComponentConfig.default || baseComponentConfig
@@ -85,14 +90,14 @@ components/
 
 ## 单例组件名
 
-**只应该拥有单个活跃实例的组件应该以 `The` 前缀命名，以示其唯一性**
+**只应该拥有单个活跃实例的组件应该以 `the` 前缀命名，以示其唯一性**
 
 这不意味着组件只可用于一个单页面，而是*每个页面*只使用一次。
 
 ```javascript
 components/
-|- TheHeading.vue
-|- TheSidebar.vue
+|- the-heading.vue
+|- the-sidebar.vue
 ```
 
 ## 组件名中单词顺序
@@ -103,12 +108,12 @@ components/
 
 ```javascript
 components/
-|- SearchButtonClear.vue
-|- SearchButtonRun.vue
-|- SearchInputQuery.vue
-|- SearchInputExcludeGlob.vue
-|- SettingsCheckboxTerms.vue
-|- SettingsCheckboxLaunchOnStartup.vue
+|- search-button-clear.vue
+|- search-button-run.vue
+|- search-input-query.vue
+|- search-input-excludeGlob.vue
+|- settings-checkbox-terms.vue
+|- settings-checkbox-launchOnStartup.vue
 ```
 
 还有另一种多级目录的方式，把所有的搜索组件放到“search”目录，把所有的设置组件放到“settings”目录。我们只推荐在非常大型 (如有 100+ 个组件) 的应用下才考虑这么做，因为在多级目录间找来找去，要比在单个 components 目录下滚动查找要花费更多的精力。

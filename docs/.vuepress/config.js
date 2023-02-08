@@ -1,6 +1,6 @@
 module.exports = {
   title: '前端开发规范',
-  description: '欢迎使用前端代码规范，使用过程中如碰到问题，请到Github进行提问。 https://github.com/CrayonPig/front-end-guide',
+  description: '针对中小厂提供开箱即用的前端规范;欢迎使用前端代码规范，使用过程中如碰到问题，请到Github进行提问。 https://github.com/CrayonPig/front-end-guide',
   dest: './dist/',
   markdown: {
     lineNumbers: true
@@ -42,15 +42,6 @@ module.exports = {
         ]
       },
       {
-        title: '命名规范',   // 必要的
-        collapsable: false, // 可选的, 默认值是 true,
-        sidebarDepth: 1,    // 可选的, 默认值是 1
-        children: [
-          '/guide/component-name',
-          '/name/js-name'
-        ]
-      },
-      {
         title: 'Git规范',   // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 1,    // 可选的, 默认值是 1
@@ -71,6 +62,25 @@ module.exports = {
           '/js/difference',
         ]
       },
+      {
+        title: '框架',   // 必要的
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
+        children: [
+          '/frame/component-name',
+          '/frame/vue',
+          '/frame/react',
+        ]
+      },
+      {
+        title: '工具',   // 必要的
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
+        children: [
+          '/utils/package-management',
+        ]
+        
+      }
     ]
   }
 }
