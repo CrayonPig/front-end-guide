@@ -1,10 +1,10 @@
 ---
 home: true
 # heroImage: /hero.png
-heroText: 前端开发规范
-tagline: 致力于提供开箱即用的前端规范方案
+heroText: 前端工程化方案
+tagline: 针对中小厂提供开箱即用的前端工程化方案
 actionText: 快速上手 →
-actionLink: /guide/
+actionLink: /project/
 features:
 - title: HTML规范
   details: 基于W3C、苹果开发者等官方文档，并结合团队日常业务需求以及团队在日常开发过程中总结提炼出的经验而约定。

@@ -21,6 +21,7 @@
   - [ ] eslint配置
   - [ ] babel配置
   - [ ] vscode配置
+  - [ ] husky
   - [ ] cli
 ### 部署工具
   - [ ] git CI/CD
