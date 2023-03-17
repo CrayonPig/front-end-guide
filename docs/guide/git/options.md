@@ -1,9 +1,9 @@
 # Git 操作规范
 ## 单人开发流程
-![git单人操作规范](../../../assets/gitFlowOne.jpeg)
+![git单人操作规范](@assets/gitFlowOne.jpeg)
 
 ## GitFlow多人协作流程
-![git多人协作规范](../../../assets/gitFlowMore.jpeg)
+![git多人协作规范](@assets/gitFlowMore.jpeg)
 
 
 ## 常用的Git操作示例
