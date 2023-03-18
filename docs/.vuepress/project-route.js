@@ -8,8 +8,8 @@ module.exports = {
       children: [
         '/project/setUp/flow',
         '/project/setUp/documents',
+        '/project/setUp/selection',
       ]
     },
-    
   ],
 }

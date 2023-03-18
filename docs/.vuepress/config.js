@@ -17,6 +17,10 @@ module.exports = {
       },
     },
   },
+  extraWatchFiles: [
+    './guide-route.js',
+    './project-route.js'
+  ],
   themeConfig: {
     nav: [
       { text: "工程", link: "/project/" },
