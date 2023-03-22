@@ -37,6 +37,7 @@
 以下是推荐
 - Swagger 后端常用文档
 - [Apifox API](https://www.apifox.com/) 一体化协作平台
+- [YApi](http://yapi.smart-xwork.cn/) 可视化接口管理平台
 
 ## bug管理工具
 bug管理工具多种多样，常用的如下

@@ -15,8 +15,10 @@ module.exports = {
       title: '开发',
       collapsable: false, // 可选的, 默认值是 true,
       children: [
-        '/project/develop/guide',
         '/project/develop/module',
+        '/project/develop/guide',
+        '/project/develop/lint',
+        '/project/develop/build',
       ]
     },
   ],
