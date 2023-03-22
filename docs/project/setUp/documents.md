@@ -52,9 +52,11 @@ bug管理工具多种多样，常用的如下
 - [tapd](https://www.tapd.cn/) 一站式敏捷研发协作云平台
 
 ## 其他
-自用文档格式，欢迎大佬们补充
-- 甘特图
-- 日报
+常用文档格式推荐，欢迎大佬们补充
+- [甘特图](https://p0da9eob0e.feishu.cn/sheets/shtcnl6JP3p6zS4Fwpe5pR68Jee)
+- [日报](https://p0da9eob0e.feishu.cn/sheets/shtcnZbbux5iyhO3M3TCoF9RfKb)
+- [多维管理甘特图](https://p0da9eob0e.feishu.cn/base/bascnttuFfhPirm837LZlcMNF0e)
+- [多维日报管理](https://p0da9eob0e.feishu.cn/base/bascnohSfop3tqcfvbRjgd37XEf)
 
 ## 小结
 不同团队对于知识协同工具的要求不一样，应按照实际情况选用，以上仅作为参考。

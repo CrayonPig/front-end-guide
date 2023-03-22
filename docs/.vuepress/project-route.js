@@ -19,6 +19,7 @@ module.exports = {
         '/project/develop/guide',
         '/project/develop/lint',
         '/project/develop/build',
+        '/project/develop/debug',
       ]
     },
   ],
