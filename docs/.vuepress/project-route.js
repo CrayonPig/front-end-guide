@@ -41,8 +41,8 @@ module.exports = {
       title: '部署',
       collapsable: false, 
       children: [
-        '/project/deploy/',
         '/project/deploy/basic',
+        '/project/deploy/',
       ]
     },
   ],
