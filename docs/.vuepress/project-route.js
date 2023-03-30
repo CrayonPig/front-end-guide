@@ -43,6 +43,7 @@ module.exports = {
       children: [
         '/project/deploy/basic',
         '/project/deploy/',
+        '/project/deploy/githubActions',
       ]
     },
   ],

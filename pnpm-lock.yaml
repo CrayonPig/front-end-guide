@@ -2,6 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   vuepress: ^1.9.8
+  vuepress-plugin-code-copy: ^1.0.6
+
+dependencies:
+  vuepress-plugin-code-copy: 1.0.6
 
 devDependencies:
   vuepress: 1.9.8
@@ -8970,6 +8974,10 @@ packages:
       util.promisify: 1.0.0
       webpack: 4.46.0
     dev: true
+
+  /vuepress-plugin-code-copy/1.0.6:
+    resolution: {integrity: sha512-FiqwMtlb4rEsOI56O6sSkekcd3SlESxbkR2IaTIQxsMOMoalKfW5R9WlR1Pjm10v6jmU661Ex8MR11k9IzrNUg==}
+    dev: false
 
   /vuepress-plugin-container/2.1.5:
     resolution: {integrity: sha512-TQrDX/v+WHOihj3jpilVnjXu9RcTm6m8tzljNJwYhxnJUW0WWQ0hFLcDTqTBwgKIFdEiSxVOmYE+bJX/sq46MA==}

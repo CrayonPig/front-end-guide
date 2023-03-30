@@ -1,7 +1,7 @@
 {
   "name": "front-end-guide",
   "version": "1.0.0",
-  "description": "前端代码规范",
+  "description": "前端工程化详解",
   "homepage": "https://github.com/CrayonPig/front-end-guide",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,8 @@
   "license": "ISC",
   "devDependencies": {
     "vuepress": "^1.9.8"
+  },
+  "dependencies": {
+    "vuepress-plugin-code-copy": "^1.0.6"
   }
 }

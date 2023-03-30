@@ -1,4 +1,4 @@
-# 前端规范
+# 前端工程化详解
 
 随着前端发展的不断壮大，`前端工程化`这个词被大家越来越多的提起，部门规划必做项，面试必问项。在目前大环境下不知道`前端工程化`已然不是一名合格的前端。
 
@@ -29,7 +29,8 @@ npm run dev
 浏览器访问 `http://localhost:8080/`
 
 ## 目录
-![持续更新中](./assets/structure.png)
+![持续更新中](./assets/structure1.png)
+![持续更新中](./assets/structure2.png)
 
 
 ## License
