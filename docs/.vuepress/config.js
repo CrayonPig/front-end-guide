@@ -27,7 +27,7 @@ module.exports = {
   ],
   themeConfig: {
     nav: [
-      { text: "工程化方案", link: "/project/" },
+      { text: "工程化详解", link: "/project/" },
       { text: "代码规范", link: "/guide/" },
       { text: "GitHub", link: "https://github.com/CrayonPig/front-end-guide" },
     ],

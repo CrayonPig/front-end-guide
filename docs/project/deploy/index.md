@@ -1,4 +1,4 @@
-# CI/CD
+# 简介
 CI/CD是指持续集成和持续交付/部署（Continuous Integration and Continuous Delivery/Deployment）。
 
 CI/CD是一种自动化软件开发和交付流程，可以帮助团队更快地交付高质量的软件，同时减少手动操作所带来的错误和风险。它还可以提高团队的协作和沟通能力，促进软件开发的持续改进。

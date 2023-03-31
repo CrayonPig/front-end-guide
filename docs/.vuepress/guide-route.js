@@ -37,8 +37,6 @@ module.exports = {
       sidebarDepth: 1,    // 可选的, 默认值是 1
       children: [
         '/guide/git/',
-        '/guide/git/cmds',
-        '/guide/git/commit',
         '/guide/git/options'
       ]
     },

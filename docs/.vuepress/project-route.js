@@ -2,7 +2,7 @@ module.exports = {
   '/project/': [
     '/project/',
     {
-      title: '立项',
+      title: '项目立项',
       collapsable: false, // 可选的, 默认值是 true,
       children: [
         '/project/setUp/flow',
@@ -12,38 +12,50 @@ module.exports = {
       ]
     },
     {
-      title: '开发',
-      collapsable: false, 
+      title: '代码质量',
+      collapsable: false, // 可选的, 默认值是 true,
       children: [
-        '/project/develop/module',
-        '/project/develop/guide',
-        '/project/develop/lint',
-        '/project/develop/debug',
-        '/project/develop/cli',
+        '/project/codeQuality/guide',
+        '/project/codeQuality/lint',
+        '/project/codeQuality/ts',
+        '/project/codeQuality/version',
+        '/project/codeQuality/codeReview',
       ]
     },
     {
-      title: '构建',
+      title: '工程搭建',
       collapsable: false, 
       children: [
         '/project/build/build',
+        '/project/build/cli',
         '/project/build/ast',
+        '/project/build/debug',
       ]
     },
     {
-      title: '测试',
+      title: '组件建设',
+      collapsable: false, 
+      children: [
+        '/project/component/module',
+      ]
+    },
+    {
+      title: '测试保障',
       collapsable: false, 
       children: [
         '/project/test/unit',
       ]
     },
     {
-      title: '部署',
+      title: 'CI/CD',
       collapsable: false, 
       children: [
-        '/project/deploy/basic',
         '/project/deploy/',
+        '/project/deploy/basic',
+        '/project/deploy/container',
         '/project/deploy/githubActions',
+        '/project/deploy/gitlabCI',
+        '/project/deploy/mode',
       ]
     },
   ],

@@ -6,7 +6,7 @@
 ![git多人协作规范](@assets/gitFlowMore.jpeg)
 
 
-## 常用的Git操作示例
+## Git Flow操作示例
 
 假设现在当前需求为xxFunction，现在开始开发
 ```shell
