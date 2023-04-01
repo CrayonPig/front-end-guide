@@ -44,6 +44,9 @@ module.exports = {
       collapsable: false, 
       children: [
         '/project/test/unit',
+        '/project/test/integration',
+        '/project/test/e2e',
+        // '/project/test/analysis',
       ]
     },
     {
