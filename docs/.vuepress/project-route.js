@@ -37,6 +37,7 @@ module.exports = {
       collapsable: false, 
       children: [
         '/project/component/module',
+        '/project/component/guide',
       ]
     },
     {
@@ -61,5 +62,14 @@ module.exports = {
         '/project/deploy/mode',
       ]
     },
+    {
+      title: '整体优化',
+      collapsable: false,
+      children: [
+        '/project/optimize/build',
+        '/project/optimize/volume',
+        '/project/optimize/performance'
+      ]
+    }
   ],
 }
