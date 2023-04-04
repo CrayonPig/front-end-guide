@@ -8,7 +8,7 @@ Lighthouse 是一个网站性能测评工具， 它是 Google Chrome 推出的�
 
 Google提供了多种LightHouse使用方案：
 1. 通过Chrome浏览器提供的DevTools使用。在Chrome浏览器中，你可以通过查看DevTools的LightHouse。
-  ![DevTools](@/../../../../assets/lignthouse_devtools.png)
+  ![DevTools](@assets/lignthouse_devtools.png)
 Categories 用于配置需要分析的事项，Device用于配置本次测试设备类型。在完成所有配置后，点击”Analyze page load“按钮即可对当前页面进行分析测试。
 2. 通过Chrome浏览器插件使用。访问Chrome Web Store，搜索LightHouse进行安装。
 3. 通过PageSpeed Insights(PSI)进行在线测试。PSI会报告网页在移动设备和桌面设备上的用户体验，并提供关于如何改进网页的建议。

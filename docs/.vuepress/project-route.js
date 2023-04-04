@@ -70,6 +70,22 @@ module.exports = {
         '/project/optimize/volume',
         '/project/optimize/performance'
       ]
-    }
+    },
+    {
+      title: '安全保障',
+      collapsable: false,
+      children: [
+        '/project/security/attack',
+        '/project/security/resource',
+      ]
+    },
+    {
+      title: '页面监控',
+      collapsable: false,
+      children: [
+        '/project/monitor/performance',
+        '/project/monitor/error',
+      ]
+    },
   ],
 }
