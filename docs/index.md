@@ -24,6 +24,32 @@ features:
   details: 完善网站安全性：包括资源保障、常见安全问题等
 - title: 页面监控
   details: 持续监控性能和异常：包括性能监控、异常监控、白屏监控、卡顿监控、用户行为监控等。
-
-footer: MIT Licensed | Copyright © 2022-present CrayonPig
 ---
+
+::: slot footer
+ MIT Licensed | Copyright © 2022-present [CrayonPig](https://github.com/CrayonPig)
+:::
+
+## 目录(持续更新中)
+![持续更新中](@assets/structure.png)
+
+## 进度
+- [x] 项目立项
+- [x] 代码质量
+- [x] 代码规范
+- [x] 工程搭建
+- [x] 组件建设
+- [x] 测试保障
+- [x] CI/CD
+- [x] 整体优化
+- [ ] 页面监控
+- [x] 安全保障
+- [ ] 混合开发
+- [ ] 组件库搭建
+- [ ] 微前端
+- [ ] 小程序
+- [ ] 可视化平台
+- [ ] 低代码平台
+## 致谢（以下排名不分先后）
+## License
+MIT

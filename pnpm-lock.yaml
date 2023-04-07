@@ -1,10 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
+  markdown-it-task-lists: ^2.1.1
   vuepress: ^1.9.8
   vuepress-plugin-code-copy: ^1.0.6
 
 dependencies:
+  markdown-it-task-lists: 2.1.1
   vuepress-plugin-code-copy: 1.0.6
 
 devDependencies:
@@ -6093,6 +6095,10 @@ packages:
     resolution: {integrity: sha512-TAIHTHPwa9+ltKvKPWulm/beozQU41Ab+FIefRaQV1NRnpzwcV9QOe6wXQS5WLivm5Q/nlo0rl6laGkMDZE7Gw==}
     engines: {node: '>6.4.0'}
     dev: true
+
+  /markdown-it-task-lists/2.1.1:
+    resolution: {integrity: sha512-TxFAc76Jnhb2OUu+n3yz9RMu4CwGfaT788br6HhEDlvWfdeJcLUsxk1Hgw2yJio0OXsxv7pyIPmvECY7bMbluA==}
+    dev: false
 
   /markdown-it/8.4.2:
     resolution: {integrity: sha512-GcRz3AWTqSUphY3vsUqQSFMbgR38a4Lh3GWlHRh/7MRwz8mcu9n2IO7HOh+bXHrR9kOPDl5RNCaEsrneb+xhHQ==}

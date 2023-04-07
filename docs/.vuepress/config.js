@@ -9,6 +9,7 @@ module.exports = {
   dest: "./dist/",
   markdown: {
     lineNumbers: true,
+    plugins: ['task-lists']
   },
   plugins: [['vuepress-plugin-code-copy', {
     backgroundTransition: false,

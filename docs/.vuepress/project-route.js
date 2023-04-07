@@ -74,6 +74,7 @@ module.exports = {
     {
       title: '安全保障',
       collapsable: false,
+      sidebarDepth: 3,
       children: [
         '/project/security/attack',
         '/project/security/resource',
@@ -82,9 +83,11 @@ module.exports = {
     {
       title: '页面监控',
       collapsable: false,
+      sidebarDepth: 3,
       children: [
         '/project/monitor/performance',
         '/project/monitor/error',
+        // '/project/monitor/whiteScreen',
       ]
     },
   ],
