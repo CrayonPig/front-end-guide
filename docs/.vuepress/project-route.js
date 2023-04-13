@@ -87,7 +87,8 @@ module.exports = {
       children: [
         '/project/monitor/performance',
         '/project/monitor/error',
-        // '/project/monitor/whiteScreen',
+        '/project/monitor/blankScreen',
+        '/project/monitor/jank',
       ]
     },
   ],
