@@ -89,6 +89,7 @@ module.exports = {
         '/project/monitor/error',
         '/project/monitor/blankScreen',
         '/project/monitor/jank',
+        '/project/monitor/behaviour',
       ]
     },
   ],
