@@ -90,6 +90,7 @@ module.exports = {
         '/project/monitor/blankScreen',
         '/project/monitor/jank',
         '/project/monitor/behaviour',
+        '/project/monitor/report',
       ]
     },
   ],
