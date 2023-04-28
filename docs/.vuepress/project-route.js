@@ -91,6 +91,7 @@ module.exports = {
         '/project/monitor/jank',
         '/project/monitor/behaviour',
         '/project/monitor/report',
+        '/project/monitor/sentry',
       ]
     },
   ],
