@@ -99,6 +99,7 @@ module.exports = {
       collapsable: false,
       children: [
         '/project/hybrid/',
+        '/project/hybrid/web',
       ]
     },
   ],

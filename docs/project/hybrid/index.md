@@ -83,10 +83,9 @@ Android和iOS系统取得成功后，WebApp的概念顺势兴起。为了追赶�
 
 **广义的Hybrid指代跨平台开发方案：**
 - Web渲染的混合APP，如JSBridge、Cordova、Ionic等。
-- 原生渲染的混合App，如ReactNative、Weex等。
-- Flutter
-- 小程序方案
-- 桌面应用混合开发方案，如Electron
+- 原生渲染的混合App，如ReactNative、Weex、小程序、UniApp等。
+- 其他渲染方案，Flutter、CocosCreator、Unity等。
+- 桌面应用混合开发方案，如Electron等。
 
 ### 优点
 1. 跨平台
