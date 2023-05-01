@@ -94,5 +94,12 @@ module.exports = {
         '/project/monitor/sentry',
       ]
     },
+    {
+      title: '混合开发',
+      collapsable: false,
+      children: [
+        '/project/hybrid/',
+      ]
+    },
   ],
 }
