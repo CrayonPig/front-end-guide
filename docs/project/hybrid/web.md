@@ -1,4 +1,4 @@
-# 基于Web渲染
+# Web渲染
 
 基于 Web 渲染的混合开发 App 是一种基于 Web 技术（HTML、CSS、JavaScript）开发的移动应用，同时使用原生容器提供的 Web 视图组件来渲染 UI。它是一种混合模式的开发方式，通过在原生容器中嵌入 Web 视图来实现跨平台开发，既可以使用 Web 技术进行开发，又可以调用原生 API 来实现更加丰富的功能和更好的用户体验。
 
@@ -8,6 +8,9 @@
 
 ## 渲染原理
 基于Web渲染的混合开发App的渲染原理都基本类似，在应用中内置一个 WebView 组件，并通过 JavaScript 代码将本地应用和 Web 应用进行交互。当用户打开应用时，会在 WebView 中加载应用的主页面，并且可以通过 JavaScript 代码来访问 WebView 的 DOM 和 CSS 样式。
+
+![Hybrid](@assets/hybrid/Hybrid.png)
+
 
 ::: tip
 简单来说，就是套了一层原生壳的web页面，web通过提前约定好的协议调用原生，原生调用设备本身的能力
@@ -192,7 +195,40 @@ func evaluateJavaScript(_ javaScriptString: String,
 [jsContext evaluateJavaScript:@"ZcyJsBridge(ev, data)"]
 ```
 
+## Electron（桌面端开发）
+Electron 是一个使用 JavaScript、HTML 和 CSS 构建跨平台的桌面应用程序。
+
+Electron 兼容 Mac、Windows 和 Linux，可以构建出三个平台的应用程序。
+
+Electron成功案例
+
+- VSCode： 程序员最常用的开发者工具。
+- Atom： 是Github开发的文本编辑器，我想大部分的前端程序员都应该使用过。
+- slack： 聊天群组 + 大规模工具集成 + 文件整合 + 搜索的一个工具。就是把很多你常用的工具整合到了一起。
+- QQ： 新版QQ
+
+Electron = Chromium + Node.js + Native APIs
+
+![electron](@assets/hybrid/electron.jpeg)
+### Chromium：
+
+Chromium 是 Google 为发展 Chrome 浏览器而启动的开源项目，Chromium 相当于 Chrome 的工程版或称实验版，新功能会率先在 Chromium 上实现，待验证后才会应用在Chrome 上，故 Chrome 的功能会相对落后但较稳定。
+
+Chromium为Electron提供强大的UI能力，可以在不考虑兼容性的情况下开发界面。
+
+### Node.js：
+
+Node 是一个让 JavaScript 运行在服务端的开发平台，Node 使用事件驱动，非阻塞I/O 模型而得以轻量和高效。
+
+单单靠Chromium是不能具备直接操作原生GUI能力的，Electron内集成了Nodejs，这让其在开发界面的同时也有了操作系统底层 API 的能力，Nodejs 中常用的 Path、fs、Crypto 等模块在 Electron 可以直接使用。
+
+### Native API：
+
+为了提供原生系统的GUI支持，Electron内置了原生应用程序接口，对调用一些系统功能，如调用系统通知、打开系统文件夹提供支持。
+
 ## 总结
 基于Web渲染的基本原理都相同，都是原生应用嵌套Webview。Cordova、PhoneGap、Ionic等流行框架都封装了较为全面的调用原生的接口。JSBridge去除了大而全东西，将只留下web和native互相通讯的方式，更为灵活。
 
-如果团队中，拥有原生开发的人员，建议选择JSBridge方式，反之选择Cordova、PhoneGap、Ionic等流行框架。
+针对需要开发跨端APP来讲，如果团队中，拥有原生开发的人员，建议选择JSBridge方式，反之选择Cordova、PhoneGap、Ionic等流行框架。
+
+针对需要开发跨端桌面应用来说，无脑Electron

@@ -12,6 +12,8 @@
 ## Native
 Native 指代Android和iOS应用的原生开发，Android使用Java或Kotlin语言开发应用，iOS使用Object-C或Swift语言开发应用。
 
+![native](@assets/hybrid/native.png)
+
 ### 优点
 1. 更好的性能和稳定性
 
@@ -52,13 +54,6 @@ Android和iOS系统取得成功后，WebApp的概念顺势兴起。为了追赶�
 
 在此基础上，Google推出了PWA应用商店，并开始向Web应用程序开发者推广PWA的概念和技术。此外，Google还在Chrome浏览器中添加了“安装应用程序”按钮，使得用户可以更容易地将Web应用程序添加到主屏幕，并像原生应用程序一样进行访问和使用，进一步提高了WebApp的可用性和可靠性。
 
-基于谷歌提出的PWA概念，2017年初，由中国移动、华为、中兴等企业提出了快应用（Quick App）的概念，旨在为移动应用提供一种更快速、更轻量级、更易用的解决方案，以满足用户快速获取信息和使用应用的需求。
-
-快应用的理念是将应用程序从安装和下载中解放出来，通过使用原生应用的技术和优势，以Web应用的形式提供快速、轻量、即时的应用体验。快应用的技术框架基于国内主流的Web技术标准，如HTML5、CSS3、JavaScript等，并且针对移动设备的特点做了优化和扩展。
-
-::: tip
-可惜的是，快应用只是国内主流手机厂商基于Android系统的一种方式，并不支持iOS系统。只能注定成为国内手机厂商自己的狂欢。
-:::
 
 ### 优点
 1. 上手门槛低，开发速度快
@@ -77,15 +72,14 @@ Android和iOS系统取得成功后，WebApp的概念顺势兴起。为了追赶�
 ## Hybrid
 由于单独使用原生开发或WebApp开发应用都或多或少存在一些问题，业界开始追寻新的解决方案。2013年10月31日 Android 4.4 版本（API Level 19）Android WebView 成为一个独立的组件，允许应用程序内嵌浏览器视图，以显示 HTML、CSS 和 JavaScript 等 Web 内容。2014年9月17日iOS 8.0 推出了 WKWebView 组件，这是一种基于WebKit渲染引擎的高性能 WebView 组件。
 
-基于Webview，业界提出了Hybrid方案，同时使用 Web 技术和 Native 技术进行开发的应用程序。
+基于Webview，业界提出了Hybrid方案，同时使用 Web 技术和 Native 技术共同进行开发的应用程序。
 
 **狭义的Hybrid App可以理解为外面是原生的壳子(不局限于Android、iOS系统)，里面是Webview。**
 
 **广义的Hybrid指代跨平台开发方案：**
-- Web渲染的混合APP，如JSBridge、Cordova、Ionic等。
-- 原生渲染的混合App，如ReactNative、Weex、小程序、UniApp等。
-- 其他渲染方案，Flutter、CocosCreator、Unity等。
-- 桌面应用混合开发方案，如Electron等。
+- Web渲染方案，如JSBridge、Cordova、Ionic、Electron等。
+- 原生渲染方案，如ReactNative、Weex、小程序、UniApp等。
+- 自绘引擎渲染方案，Flutter、CocosCreator、Unity等。
 
 ### 优点
 1. 跨平台

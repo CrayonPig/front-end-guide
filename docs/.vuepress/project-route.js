@@ -95,11 +95,14 @@ module.exports = {
       ]
     },
     {
-      title: '混合开发',
+      title: '跨平台开发',
       collapsable: false,
       children: [
         '/project/hybrid/',
         '/project/hybrid/web',
+        '/project/hybrid/native',
+        '/project/hybrid/canvas',
+        '/project/hybrid/miniProgram',
       ]
     },
   ],
