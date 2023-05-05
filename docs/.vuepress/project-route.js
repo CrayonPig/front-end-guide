@@ -102,6 +102,7 @@ module.exports = {
         '/project/hybrid/web',
         '/project/hybrid/native',
         '/project/hybrid/canvas',
+        '/project/hybrid/use',
         '/project/hybrid/miniProgram',
       ]
     },
