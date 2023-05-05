@@ -106,5 +106,14 @@ module.exports = {
         '/project/hybrid/miniProgram',
       ]
     },
+    {
+      title: '微前端',
+      collapsable: false,
+      children: [
+        '/project/micro/',
+        '/project/micro/use',
+        '/project/micro/reuse',
+      ]
+    },
   ],
 }
