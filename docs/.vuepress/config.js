@@ -1,6 +1,7 @@
 const path = require("path");
 const guideRoute = require("./guide-route");
 const projectRoute = require("./project-route");
+const monitorRoute = require("./monitor-route");
 
 module.exports = {
   title: "前端工程化详解",
@@ -23,18 +24,19 @@ module.exports = {
     },
   },
   extraWatchFiles: [
-    '.vuepress/guide-route.js',
-    '.vuepress/project-route.js'
+    '.vuepress/*.js',
   ],
   themeConfig: {
     nav: [
       { text: "工程化详解", link: "/project/" },
+      { text: "监控系统", link: "/monitor/" },
       { text: "代码规范", link: "/guide/" },
       { text: "GitHub", link: "https://github.com/CrayonPig/front-end-guide" },
     ],
     sidebar: {
       ...guideRoute,
       ...projectRoute,
+      ...monitorRoute,
     },
   },
 };
