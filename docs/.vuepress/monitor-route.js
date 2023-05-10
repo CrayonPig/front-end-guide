@@ -7,7 +7,7 @@ module.exports = {
       sidebarDepth: 1,    // 可选的, 默认值是 1
       children: [
         '/monitor/framework',
-        // '/monitor/framework-sdk',
+        '/monitor/framework-sdk',
         // '/monitor/framework-node',
       ]
     },
