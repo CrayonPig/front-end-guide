@@ -19,5 +19,13 @@ module.exports = {
         '/monitor/sdk/basics',
       ]
     },
+    {
+      title: '附属知识',
+      collapsable: false, // 可选的, 默认值是 true,
+      sidebarDepth: 1,    // 可选的, 默认值是 1
+      children: [
+        '/monitor/utils/package',
+      ]
+    },
   ]
 }

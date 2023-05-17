@@ -1,6 +1,6 @@
 # 基础搭建
 
-基于此前 [SDK架构](../framework-sdk.md) 我们整理的内容，本次SDK将采用`Lerna`作为管理多包工具，`Rollup`作为构建工具
+基于此前 我们分析的监控系统的[SDK架构](../framework-sdk.md) ，我们决定采用`Lerna`作为管理多包工具，`Rollup`作为构建工具，当然，其他常用的基础配置也是少不了的 `TypeScript` + `ESLint` + `Husky` + `ESModule`等
 
 ## Lerna
 
@@ -155,4 +155,196 @@ module.exports = utils;
 
 [Rollup](https://www.rollupjs.com/)是一个 JavaScript 模块打包工具，可以将多个小的代码片段编译为完整的库和应用。常见的如`Vue.js`和`React.js`均是由 Rollup 打包构建的。
 
+### 使用ESModule
 
+ 使用 ESModule 可以提供更好的模块化支持、静态代码分析、明确的依赖管理、命名空间隔离、动态导入和类型检查等优势。这些好处有助于提高代码的可读性、可维护性和性能，并提供更好的开发体验。除此之外，`Rollup`本身支持 ESModule，并且支持[`Tree-Shaking`](https://www.rollupjs.com/#tree-shaking)，可以对代码进行静态分析，将实际未使用用到的代码剔除。
+
+  1. 将根目录的 package.json 文件的 type 属性改为 [module](../utils/package.html#type)
+  2. 将 core 和 utils 包内容改为 ESModule 形式
+
+### 添加执行脚本
+
+1. 在项目中安装 Rollup, 我这里版本号是 `3.21.7`
+
+  ```sh
+  npm install rollup --save-dev
+  ```
+
+2. 根目录创建 scripts 文件夹，并创建 `rollup.dev.js` 文件
+  
+  ```js
+    export default {
+      input: 'packages/core/lib/index.js', // 入口文件
+      output: {
+        file: './dist/bundle.js', // 出口文件
+        format: 'iife', // 生成文件格式，为方便调试暂时先写 iife，意为输出后bundle为自执行函数，适用于 <script> 标签
+        name: 'beaconify', // 全局变量名
+      },
+    }
+  ```
+
+3. 根目录 package.json 添加一个 dev 命令， `-c, --config` 命令是制定配置文件，如果没有指定，则默认根目录 `rollup.config.js`
+  
+  ```js
+  "scripts": {
+    "dev": "rollup --config ./scripts/rollup.dev.js"
+  },
+  ```
+
+接下来我们执行 `npm run dev` 命令，可以发现，在根目录下的dist中的确生成 `bundle.js` 文件，内容如下
+
+```js
+import { utils } from '@beaconify/utils';
+
+function core() {
+  utils();
+  console.log('Hello from core');
+}
+
+export { core as default };
+```
+
+跟我们想象的不太一样， `@beaconify/utils` 包内的内容并没有被导出，只是做了一个引用。这是因为 `Rollup` 默认只会对 node_modules 目录中的文件做引用，如果需要导出，要使用额外插件 [`@rollup/plugin-node-resolve`](https://www.npmjs.com/package/@rollup/plugin-node-resolve)，至于[为什么不将 node-resolve 作为内置功能？](https://www.rollupjs.com/guide/faqs#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%B0%86-node-resolve-%E4%BD%9C%E4%B8%BA%E5%86%85%E7%BD%AE%E5%8A%9F%E8%83%BD)
+
+``` sh
+npm install @rollup/plugin-node-resolve --save-dev
+```
+
+修改 `rollup.dev.js` 文件
+
+``` js
+import resolve from '@rollup/plugin-node-resolve';
+
+export default {
+  input:'packages/core/lib/index.js', // 入口
+  output: {
+    file:'./dist/bundle.js', // 出口
+    format: 'iife',
+    name:'beaconify',
+  },
+  plugins: [resolve()]
+}
+```
+
+再次执行 `npm run dev` 命令，看到输出文件变成了
+
+```js
+function utils() {
+  console.log('Hello from utils');
+}
+
+function core() {
+  utils();
+  console.log('Hello from core');
+}
+
+export { core as default };
+```
+
+虽然我们已经定好标准使用 ESModule ，但我们无法保证项目中使用的所有的第三方库都是 ESModule，为了支持 Commonjs，需安装插件@rollup/plugin-commonjs
+
+``` sh
+npm install @rollup/plugin-commonjs --save-dev
+```
+
+在 `rollup.dev.js` 中添加
+
+```js
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+
+export default {
+  input: 'packages/core/lib/index.js', // 入口
+  output: {
+    file: './dist/bundle.js', // 出口
+    format: 'iife',
+    name: 'beaconify',
+  },
+  plugins: [
+    resolve(),
+    commonjs()
+  ]
+}
+```
+
+### 热更新
+
+为了提高效率，在开发的时候，我们希望 rollup能自动监听文件的改动，并且因为我们 SDK 场景是用于浏览器，所以我们希望能像 webpack 一样，打开页面供我们调试。
+
+针对监听文件的改动，Rollup 为我们提供了命令 `-w/--watch`, 表示监听 bundle 中的文件并在文件改变时重新构建
+
+```js
+"scripts": {
+  "dev": "rollup -w --config ./scripts/rollup.dev.js"
+},
+```
+
+打开页面调试，我们需要借助 `rollup-plugin-serve` 和 `rollup-plugin-livereload`, 这两个插件常常一起使用，`rollup-plugin-serve` 用于启动一个服务器，`rollup-plugin-livereload` 用于文件变化时，实时刷新页面
+
+```sh
+npm install rollup-plugin-serve --save-dev
+npm install rollup-plugin-livereload --save-dev
+```
+
+修改 `rollup.dev.js` 文件
+
+```js
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload'
+
+export default {
+  input: 'packages/core/lib/index.js', // 入口
+  output: {
+    file: './dist/bundle.js', // 出口
+    format: 'iife',
+    name: 'beaconify',
+  },
+  plugins: [
+    resolve(),
+    commonjs(),
+    serve({
+      open: true,
+      contentBase: ['example', 'dist'],  //服务器启动的文件夹，默认是项目根目录，需要在该文件下创建index.html
+      port: 8020   //端口号，默认10001
+    }),    
+    livereload('dist')   //watch dist目录，当目录中的文件发生变化时，刷新页面
+  ]
+}
+```
+
+同时 根目录创建`example`文件夹，并添加`index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="./bundle.js"></script>
+<body>
+  
+</body>
+</html>
+<script>
+  beaconify()
+</script>
+```
+
+最后执行 `npm run dev` 命令，可以发现可以自动打开浏览器，并且 控制台已经有输出
+
+![控制台输出](@/assets/monitor/hotout.png)
+
+我们手动更改 `core` 或 `utils` 的内容后，控制台的输出也会随之改变
+
+<!-- ## TypeScript
+
+为了提高代码维护性和可读性，我们将引入 `TypeScript`，此项功能依赖 `typescirpt`、`tslib`、`rollup-plugin-typescript2`
+
+```sh
+npm install rollup-plugin-typescript2 typescript tslib --save-dev
+``` -->
