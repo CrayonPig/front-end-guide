@@ -337,14 +337,14 @@ export default {
 
 最后执行 `npm run dev` 命令，可以发现可以自动打开浏览器，并且 控制台已经有输出
 
-![控制台输出](@/assets/monitor/hotout.png)
+![控制台输出](@assets/monitor/hotout.png)
 
 我们手动更改 `core` 或 `utils` 的内容后，控制台的输出也会随之改变
 
-<!-- ## TypeScript
+## TypeScript
 
 为了提高代码维护性和可读性，我们将引入 `TypeScript`，此项功能依赖 `typescirpt`、`tslib`、`rollup-plugin-typescript2`
 
 ```sh
 npm install rollup-plugin-typescript2 typescript tslib --save-dev
-``` -->
+```
