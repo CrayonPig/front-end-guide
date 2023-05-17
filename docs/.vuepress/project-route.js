@@ -20,6 +20,7 @@ module.exports = {
         '/project/codeQuality/ts',
         '/project/codeQuality/version',
         '/project/codeQuality/codeReview',
+        '/project/codeQuality/tsconfig',
       ]
     },
     {
