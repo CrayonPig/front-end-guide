@@ -1,4 +1,4 @@
-# tsconfig.json
+# tsconfig.json 字段解析
 
 tsconfig.json 配置文件会有如下结构
 

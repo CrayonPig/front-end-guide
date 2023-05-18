@@ -163,7 +163,7 @@ module.exports = utils;
 
   postinstall 是自带的钩子函数，表示在 `npm install` 执行完成后自动调用， `lerna link` 表示将仓库中互相引用的依赖连接起来
 
-  有关更多的`script` 字段，可参考[script解析](../utils/package.md#script)
+  有关更多的`script` 字段，可参考[script解析](../../project/build/package#script)
 
 ## Rollup
 
@@ -515,6 +515,6 @@ export default {
 
 重新运行，就可以看到报错提醒了
 
-## babel
+## Babel
 
 由于是监控类SDK项目，对代码体积有一定的要求，所以暂时先不用 `Babel`，减少不必要的polyfill，尤其是公司项目都是vue、react的情况下，不需要兼容低版本浏览器，如果后续确实有需求，我们可以单开一个polyfill插件做兼容。

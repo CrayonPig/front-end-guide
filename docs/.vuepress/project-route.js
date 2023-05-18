@@ -31,6 +31,7 @@ module.exports = {
         '/project/build/cli',
         '/project/build/ast',
         '/project/build/debug',
+        '/project/build/package',
       ]
     },
     {
