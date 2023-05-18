@@ -16,3 +16,72 @@
 ::: tip
 不管type字段的值是多少, 以.mjs后缀名的文件总是被当作ES6模块，而以.cjs后缀名的文件总是被当成CommonJS模块，但不建议混用
 :::
+
+## script
+
+npm 允许在 `package.json` 文件里面，使用 `scripts` 字段定义脚本命令, `scripts` 的每一个对象都对应一条脚本命令。
+
+```json
+{
+  // ...
+  "scripts": {
+    "build": "node build.js"
+  }
+}
+```
+
+上述示例中，`build` 对应的脚本是 `node build.js`，表示在项目根目录执行 `npm run build` 时，就执行 `node build.js` 命令。
+
+npm 脚本的原理非常简单。每当执行 `npm run`，就会自动新建一个 `Shell`，在这个 `Shell` 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。
+
+比较特别的是，`npm run`新建的这个 `Shell`，会将当前目录的`node_modules/.bin`子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。
+
+### 默认值
+
+一般来说，npm 脚本由用户提供。但是，npm 对两个脚本提供了默认值。也就是说，这两个脚本不用定义，就可以直接使用。
+
+```json
+"start": "node server.js",
+"install": "node-gyp rebuild"
+```
+
+上面代码中，`npm run start` 的默认值是 `node server.js`，前提是项目根目录下有 `server.js` 这个脚本； `npm run install` 的默认值是 `node-gyp rebuild` ，前提是项目根目录下有 `binding.gyp` 文件。
+
+### 钩子
+
+npm 脚本有 `pre` 和 `post` 两个钩子。举例来说，`build` 脚本命令的钩子就是 `prebuild` 和 `postbuild` 。
+
+```json
+"prebuild": "echo I run before the build script",
+"build": "cross-env NODE_ENV=production webpack",
+"postbuild": "echo I run after the build script"
+```
+
+用户执行 `npm run build` 的时候，会自动按照下面的顺序执行。
+
+```sh
+npm run prebuild && npm run build && npm run postbuild
+```
+
+因此，可以在这两个钩子里面，完成一些准备工作和清理工作。下面是一个例子。
+
+```json
+"clean": "rimraf ./dist && mkdir dist",
+"prebuild": "npm run clean",
+"build": "cross-env NODE_ENV=production webpack"
+```
+
+npm 默认提供下面这些钩子。
+
+- prepublish，postpublish
+- preinstall，postinstall
+- preuninstall，postuninstall
+- preversion，postversion
+- pretest，posttest
+- prestop，poststop
+- prestart，poststart
+- prerestart，postrestart
+
+自定义的脚本命令也可以加上 `pre` 和`post`钩子。比如，`myscript`这个脚本命令，也有`premyscript`和`postmyscript`钩子。不过，双重的`pre`和`post`无效，比如`prepretest`和`postposttest`是无效的。
+
+更多有关 scripts 命令，可参考[阮一峰的npm scripts 使用指南](https://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)

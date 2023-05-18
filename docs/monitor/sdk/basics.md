@@ -151,6 +151,20 @@ module.exports = utils;
 
 然后通过node执行 `core/lib/index.js`，成功打印两个日志后，代表引用成功
 
+### 后续安装依赖
+
+  通过上述调用后，我们可以正常使用依赖，但后续重新安装依赖或者其他成员使用时，应该需要更简单的方法使用，所以我们要在 `package.json` 加一个新的命令
+  
+  ```json
+  "scripts": {
+    "postinstall": "lerna link"
+  },
+  ```
+
+  postinstall 是自带的钩子函数，表示在 `npm install` 执行完成后自动调用， `lerna link` 表示将仓库中互相引用的依赖连接起来
+
+  有关更多的`script` 字段，可参考[script解析](../utils/package.md#script)
+
 ## Rollup
 
 [Rollup](https://www.rollupjs.com/)是一个 JavaScript 模块打包工具，可以将多个小的代码片段编译为完整的库和应用。常见的如`Vue.js`和`React.js`均是由 Rollup 打包构建的。
@@ -241,7 +255,7 @@ function core() {
 export { core as default };
 ```
 
-虽然我们已经定好标准使用 ESModule ，但我们无法保证项目中使用的所有的第三方库都是 ESModule，为了支持 Commonjs，需安装插件@rollup/plugin-commonjs
+虽然我们已经定好标准使用 ESModule ，但我们无法保证项目中使用的所有的第三方库都是 ESModule，为了支持 Commonjs，需安装插件`@rollup/plugin-commonjs`
 
 ``` sh
 npm install @rollup/plugin-commonjs --save-dev
@@ -348,3 +362,154 @@ export default {
 ```sh
 npm install rollup-plugin-typescript2 typescript tslib --save-dev
 ```
+
+`rollup.dev.js` 文件中，添加ts相关内容
+
+```js
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload'
+import typescript from 'rollup-plugin-typescript2';
+
+const extensions = [
+  '.js',
+  '.ts'
+]
+
+export default {
+  input: 'packages/core/lib/index.ts', // 入口
+  output: {
+    file: './dist/bundle.js', // 出口
+    format: 'iife',
+    name: 'beaconify',
+  },
+  extensions,
+  plugins: [
+    resolve(extensions),
+    commonjs(),
+    serve({
+      open: true,
+      contentBase: ['example', 'dist'],  //服务器启动的文件夹，默认是项目根目录，需要在该文件下创建index.html
+      port: 8020   //端口号，默认10001
+    }),    
+    livereload('dist'),   //watch dist目录，当目录中的文件发生变化时，刷新页面
+    typescript({
+      extensions
+    })
+  ]
+}
+```
+
+`extensions` 是用于配置解析模块文件的扩展名的选项。通过指定 extensions，你可以告诉 Rollup 在解析模块时考虑哪些文件扩展名。
+
+然后将 core 和 utils 包内容改为 ts 形式，在项目根目录添加 `tsconfig.json`，该文件具体配置字段描述参见[tsconfig.json字段](../../project/codeQuality/tsconfig.html)
+
+```json
+{
+  "compilerOptions": {
+    "target": "ESNext", // 目标语言的版本
+    "module": "ESNext", // 生成代码的模板标准
+    "importHelpers": true,  // 通过tslib引入helper函数，文件必须是模块
+    "moduleResolution": "node16", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
+    "skipLibCheck": true, // 跳过对声明文件的类型检查
+    "esModuleInterop": true, // 允许export=导出，由import from 导入
+    "resolveJsonModule": true, // 是否允许直接导入 JSON 文件作为模块。
+    "allowSyntheticDefaultImports": true, // 允许在导入模块时使用合成的默认导入。
+    "sourceMap": true, // 生成目标文件的sourceMap文件
+    "outDir": "dist", // 指定输出目录
+    "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
+    "lib": ["esnext", "DOM"], // TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
+  },
+  // 指定一个匹配列表，支持 glob 通配符（属于自动指定该路径下的所有ts相关文件）
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+  ],
+  // 指定一个排除列表，支持 glob 通配符（include的反向操作）
+  "exclude": ["node_modules"]
+}
+```
+
+以上步骤完成后，我们查看 `core` 对 `utils` 包的引用，会发现ts报错
+
+```js
+找不到模块“@beaconify/utils”或其相应的类型声明。ts(2307)
+```
+
+这是因为ts将`@beaconify/utils`视为第三方模块，而不是本地资源文件。会去查找他的.d.ts文件，但我们并没有这个文件。解决也很简单，在`tsconfig.json` 加相关的路径引用
+
+```json
+{
+  "compilerOptions": {
+    // 配置模块解析时的路径映射
+    "paths": {
+      "@beaconify/utils": [
+        "./packages/utils/lib"
+      ]
+    }
+  },
+}
+```
+
+此时再去看，ts已经正常运行在我们项目中了
+
+## ESLint
+
+`ESLint` 是一个基于代码风格的代码检查工具，可以检查不规范的代码。
+
+我们首先安装 `ESLint` 本体 、 rollup 检测插件 `@rollup/plugin-eslint` 以及我们自己的Eslint规则 `eslint-plugin-guide`
+
+`eslint-plugin-guide` 的规则可参见[eslint-plugin-guide](../../guide/index.md)
+
+```sh
+npm install eslint @rollup/plugin-eslint eslint-plugin-guide --save-dev
+```
+
+::: tip
+不要使用 `rollup-plugin-eslint` 插件，该插件不支持一些`ESLint` 规则，会报错
+:::
+
+然后根目录新建 `.eslintrc` 文件
+
+```json
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "globals": {
+    "NodeJS": "readonly",
+    "Window": "readonly",
+  },
+  "plugins": [
+    "guide"
+  ],
+  "extends": [
+    "plugin:guide/base",
+    "plugin:guide/typeScript"
+  ],
+  "rules": {
+  }
+}
+```
+
+::: tip 为什么不使用 `.eslintrc.js` 文件？
+`ESLint` 在处理配置文件时，默认将其视为 `CommonJS` 模块。但是，当配置文件所在的目录的最近的 `package.json` 文件中包含 `"type": "module"` `的声明时，ESLint` 将其视为 `ES` 模块文件。就会产生冲突。
+:::
+
+此时我们通过编辑器查看代码，已经有了报错提醒，但是我们使用rollup的时候还没有报错，所以继续配置 `rollup.dev.js`
+
+```js
+import eslint from '@rollup/plugin-eslint';
+export default {
+  // ...
+  plugins: [
+    eslint({
+      include: ['packages/**/*.ts']
+    })
+  ]
+}
+```
+
+重新运行，就可以看到报错提醒了
