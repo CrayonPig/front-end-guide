@@ -506,10 +506,15 @@ export default {
   // ...
   plugins: [
     eslint({
-      include: ['packages/**/*.ts']
+      include: ['packages/**/*.ts'],
+      throwOnError: true // 有报错则中止进程
     })
   ]
 }
 ```
 
 重新运行，就可以看到报错提醒了
+
+## babel
+
+由于是监控类SDK项目，对代码体积有一定的要求，所以暂时先不用 `Babel`，减少不必要的polyfill，尤其是公司项目都是vue、react的情况下，不需要兼容低版本浏览器，如果后续确实有需求，我们可以单开一个polyfill插件做兼容。
