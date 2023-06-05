@@ -2,6 +2,7 @@ const path = require("path");
 const guideRoute = require("./guide-route");
 const projectRoute = require("./project-route");
 const monitorRoute = require("./monitor-route");
+const sourceRoute = require("./source-route");
 
 module.exports = {
   title: "前端工程化详解",
@@ -30,14 +31,16 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "工程化详解", link: "/project/" },
-      { text: "前端监控系统", link: "/monitor/" },
       { text: "代码规范", link: "/guide/" },
+      { text: "原理掌握", link: "/source/" },
+      { text: "前端监控系统", link: "/monitor/" },
       { text: "GitHub", link: "https://github.com/CrayonPig/front-end-guide" },
     ],
     sidebar: {
       ...guideRoute,
       ...projectRoute,
       ...monitorRoute,
+      ...sourceRoute
     },
   },
 };

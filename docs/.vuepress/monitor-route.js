@@ -17,6 +17,8 @@ module.exports = {
       sidebarDepth: 1,    // 可选的, 默认值是 1
       children: [
         '/monitor/sdk/basics',
+        '/monitor/sdk/init',
+        '/monitor/sdk/optimize',
       ]
     }
   ]
