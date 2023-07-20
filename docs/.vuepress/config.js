@@ -3,7 +3,6 @@ const guideRoute = require("./guide-route");
 const projectRoute = require("./project-route");
 const monitorRoute = require("./monitor-route");
 const sourceRoute = require("./source-route");
-const originCodeRoute = require("./origin-code-route");
 
 module.exports = {
   title: "前端工程化详解",
