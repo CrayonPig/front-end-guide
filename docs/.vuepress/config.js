@@ -41,8 +41,7 @@ module.exports = {
       ...guideRoute,
       ...projectRoute,
       ...monitorRoute,
-      ...sourceRoute,
-      ...originCodeRoute
+      ...sourceRoute
     },
   },
 };
