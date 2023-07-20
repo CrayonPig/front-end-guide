@@ -33,12 +33,7 @@ module.exports = {
     nav: [
       { text: "工程化详解", link: "/project/" },
       { text: "代码规范", link: "/guide/" },
-      {
-        text: '源码分析',
-        items: [
-          { text: 'Vue2', link: '/originCode/vue2/' },
-        ]
-      },
+      { text: '源码分析', link: "https://origin.duanhl.com/" },
       { text: "前端监控系统", link: "/monitor/" },
       { text: "GitHub", link: "https://github.com/CrayonPig/front-end-guide" },
     ],
