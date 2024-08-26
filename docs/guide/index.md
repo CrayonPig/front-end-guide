@@ -15,9 +15,9 @@ sidebarDepth: 0
 ## 命名规范
 市面上常用的命名规范：
 
-camelCase（小驼峰式命名法 —— 首字母小写）
-PascalCase（大驼峰式命名法 —— 首字母大写）
-kebab-case（短横线连接式）
-Snake（下划线连接式）
+- camelCase（小驼峰式命名法 —— 首字母小写）
+- PascalCase（大驼峰式命名法 —— 首字母大写）
+- kebab-case（短横线连接式）
+- Snake（下划线连接式）
 
 > 项目内遵循“静态文件下划线，编译文件短横线”的约定
