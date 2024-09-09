@@ -11,14 +11,17 @@ module.exports = {
   description:
     "前端工程化详解;开箱即用的前端工程化方案;前端代码规范;使用过程中如碰到问题，请到Github进行提问。 https://github.com/CrayonPig/front-end-guide",
   dest: "./dist/",
+  plugins: ['@vuepress/medium-zoom'],
   markdown: {
     lineNumbers: true,
-    plugins: ['task-lists']
+    extendMarkdown: (md) => {
+      const options = {
+        btnText: '复制代码', // 'copy' | button text
+        successText: '成功', // 'copy success' | copy-success text
+      };
+      md.use(require("markdown-it-copy"), options);
+    },
   },
-  plugins: [['vuepress-plugin-code-copy', {
-    backgroundTransition: false,
-    successText: '复制成功！'
-  }]],
   configureWebpack: {
     resolve: {
       alias: {

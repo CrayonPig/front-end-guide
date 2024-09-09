@@ -11,6 +11,7 @@ module.exports = {
         '/advanced/esbuild/summary',
       ]
     },
+    '/advanced/esbuild/plugin',
   ]
 }
     

@@ -1,0 +1,68 @@
+$posAbs = 16px
+$font-color = #666
+
+normal-font-style()
+  font-family system-ui
+  font-size 12px
+  line-height 18px
+  color $font-color
+  opacity 0.3
+
+normal-style()
+  top 0
+  right 0
+  padding 3px 6px
+  border 0
+  border-radius 3px
+  background none
+  normal-font-style()
+  outline none
+
+pre
+  position relative
+
+.m-mdic-copy-wrapper
+  position absolute
+  top $posAbs
+  right $posAbs
+  span.u-mdic-copy-code_lang
+    position absolute
+    top 3px
+    right calc(100% + 4px)
+    normal-font-style()
+  div.u-mdic-copy-notify
+    display none
+    top: 0px
+    right: -6px
+    border: 0
+    border-radius: 3px
+    background: none
+    outline: none
+    opacity: 1
+    padding: 8px 0px 3px 6px
+    font-size: 12px
+    line-height: 18px
+    color: hsla(0,0%,100%,.4)
+  button.u-mdic-copy-btn
+    position: absolute
+    top: -11px
+    right: -6px
+    padding: 3px 6px
+    border: 0
+    border-radius: 3px
+    background: none
+    font-family: system-ui
+    font-size: 12px
+    line-height: 18px
+    color: hsla(0,0%,100%,.4)
+    outline: none
+    cursor: pointer
+    transition: color .35s
+
+    &:hover
+      opacity 1
+
+
+div[class*=language-]:before {
+    right: 6em;
+}
