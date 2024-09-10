@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>插件机制 | 前端工程化详解</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="前端工程化详解;开箱即用的前端工程化方案;前端代码规范;使用过程中如碰到问题，请到Github进行提问。 https://github.com/CrayonPig/front-end-guide">
+    
+    <link rel="preload" href="/assets/css/0.styles.96eb8417.css" as="style"><link rel="preload" href="/assets/js/app.108c1834.js" as="script"><link rel="preload" href="/assets/js/2.dcfe666b.js" as="script"><link rel="preload" href="/assets/js/1.40c2f1c6.js" as="script"><link rel="preload" href="/assets/js/32.4c228f8e.js" as="script"><link rel="prefetch" href="/assets/js/10.64f76c39.js"><link rel="prefetch" href="/assets/js/100.a1180520.js"><link rel="prefetch" href="/assets/js/101.7658aa89.js"><link rel="prefetch" href="/assets/js/102.4777499f.js"><link rel="prefetch" href="/assets/js/103.dde2e8d6.js"><link rel="prefetch" href="/assets/js/104.74d54f72.js"><link rel="prefetch" href="/assets/js/105.b9378ef6.js"><link rel="prefetch" href="/assets/js/106.991ca705.js"><link rel="prefetch" href="/assets/js/107.f39d16c8.js"><link rel="prefetch" href="/assets/js/108.bbf91741.js"><link rel="prefetch" href="/assets/js/109.d6dabaa3.js"><link rel="prefetch" href="/assets/js/11.16e01291.js"><link rel="prefetch" href="/assets/js/110.204adb41.js"><link rel="prefetch" href="/assets/js/111.0df39aaa.js"><link rel="prefetch" href="/assets/js/112.68c53c39.js"><link rel="prefetch" href="/assets/js/113.3f554f74.js"><link rel="prefetch" href="/assets/js/114.80e0a735.js"><link rel="prefetch" href="/assets/js/115.4043bc45.js"><link rel="prefetch" href="/assets/js/116.9b3202d4.js"><link rel="prefetch" href="/assets/js/117.603274f4.js"><link rel="prefetch" href="/assets/js/118.71ba4891.js"><link rel="prefetch" href="/assets/js/119.085b2f3c.js"><link rel="prefetch" href="/assets/js/12.17a77149.js"><link rel="prefetch" href="/assets/js/120.cb187174.js"><link rel="prefetch" href="/assets/js/121.4407715b.js"><link rel="prefetch" href="/assets/js/122.958aeca1.js"><link rel="prefetch" href="/assets/js/123.2be10e9a.js"><link rel="prefetch" href="/assets/js/124.d0427295.js"><link rel="prefetch" href="/assets/js/13.55b244ca.js"><link rel="prefetch" href="/assets/js/14.46e84065.js"><link rel="prefetch" href="/assets/js/15.da16365c.js"><link rel="prefetch" href="/assets/js/16.169439ae.js"><link rel="prefetch" href="/assets/js/17.cfedfa65.js"><link rel="prefetch" href="/assets/js/18.9f689a15.js"><link rel="prefetch" href="/assets/js/19.5a911213.js"><link rel="prefetch" href="/assets/js/20.0afe695e.js"><link rel="prefetch" href="/assets/js/21.2aa4e14c.js"><link rel="prefetch" href="/assets/js/22.67653154.js"><link rel="prefetch" href="/assets/js/23.c3e80bd4.js"><link rel="prefetch" href="/assets/js/24.bd1d2839.js"><link rel="prefetch" href="/assets/js/25.7f1bb397.js"><link rel="prefetch" href="/assets/js/26.ed6982d3.js"><link rel="prefetch" href="/assets/js/27.f66a0f8a.js"><link rel="prefetch" href="/assets/js/28.67fa909c.js"><link rel="prefetch" href="/assets/js/29.cf85fa43.js"><link rel="prefetch" href="/assets/js/3.573795a0.js"><link rel="prefetch" href="/assets/js/30.f1075416.js"><link rel="prefetch" href="/assets/js/31.a89b0c96.js"><link rel="prefetch" href="/assets/js/33.5ffb6f76.js"><link rel="prefetch" href="/assets/js/34.6880c1f4.js"><link rel="prefetch" href="/assets/js/35.79fc3944.js"><link rel="prefetch" href="/assets/js/36.cad43b13.js"><link rel="prefetch" href="/assets/js/37.1beb5d32.js"><link rel="prefetch" href="/assets/js/38.ed7b9cb3.js"><link rel="prefetch" href="/assets/js/39.5e7fee77.js"><link rel="prefetch" href="/assets/js/4.653f0222.js"><link rel="prefetch" href="/assets/js/40.59f3dae1.js"><link rel="prefetch" href="/assets/js/41.9c4babda.js"><link rel="prefetch" href="/assets/js/42.18360e38.js"><link rel="prefetch" href="/assets/js/43.df1e25fe.js"><link rel="prefetch" href="/assets/js/44.401e27dc.js"><link rel="prefetch" href="/assets/js/45.643f4bc1.js"><link rel="prefetch" href="/assets/js/46.fabe0dbd.js"><link rel="prefetch" href="/assets/js/47.bf98684d.js"><link rel="prefetch" href="/assets/js/48.6fc94d35.js"><link rel="prefetch" href="/assets/js/49.8977f17a.js"><link rel="prefetch" href="/assets/js/5.563ccd5c.js"><link rel="prefetch" href="/assets/js/50.cf17d83f.js"><link rel="prefetch" href="/assets/js/51.2d09d823.js"><link rel="prefetch" href="/assets/js/52.3b44ba22.js"><link rel="prefetch" href="/assets/js/53.ce8ac2e9.js"><link rel="prefetch" href="/assets/js/54.421b2d13.js"><link rel="prefetch" href="/assets/js/55.3fca4a4e.js"><link rel="prefetch" href="/assets/js/56.a2999385.js"><link rel="prefetch" href="/assets/js/57.3d3e1c7a.js"><link rel="prefetch" href="/assets/js/58.10498d46.js"><link rel="prefetch" href="/assets/js/59.06af7835.js"><link rel="prefetch" href="/assets/js/6.1ef82e4c.js"><link rel="prefetch" href="/assets/js/60.2df7b556.js"><link rel="prefetch" href="/assets/js/61.4ada5a17.js"><link rel="prefetch" href="/assets/js/62.11f8cf74.js"><link rel="prefetch" href="/assets/js/63.ccc51164.js"><link rel="prefetch" href="/assets/js/64.cad8b633.js"><link rel="prefetch" href="/assets/js/65.52fe6ee7.js"><link rel="prefetch" href="/assets/js/66.d49c23ee.js"><link rel="prefetch" href="/assets/js/67.d3ff706e.js"><link rel="prefetch" href="/assets/js/68.f7cd0e2a.js"><link rel="prefetch" href="/assets/js/69.fdddfbc2.js"><link rel="prefetch" href="/assets/js/7.4ea4b605.js"><link rel="prefetch" href="/assets/js/70.1aa58c82.js"><link rel="prefetch" href="/assets/js/71.2052d63a.js"><link rel="prefetch" href="/assets/js/72.d8f1b66e.js"><link rel="prefetch" href="/assets/js/73.4b667290.js"><link rel="prefetch" href="/assets/js/74.53b59fd4.js"><link rel="prefetch" href="/assets/js/75.388ae3b1.js"><link rel="prefetch" href="/assets/js/76.19ffc210.js"><link rel="prefetch" href="/assets/js/77.27223af0.js"><link rel="prefetch" href="/assets/js/78.749ac1a7.js"><link rel="prefetch" href="/assets/js/79.7b1fb792.js"><link rel="prefetch" href="/assets/js/80.7ee032bf.js"><link rel="prefetch" href="/assets/js/81.09ec8239.js"><link rel="prefetch" href="/assets/js/82.78b8a18c.js"><link rel="prefetch" href="/assets/js/83.d03d91f7.js"><link rel="prefetch" href="/assets/js/84.589fc3ef.js"><link rel="prefetch" href="/assets/js/85.ec5fed24.js"><link rel="prefetch" href="/assets/js/86.c93521c7.js"><link rel="prefetch" href="/assets/js/87.22d4fc48.js"><link rel="prefetch" href="/assets/js/88.89acf686.js"><link rel="prefetch" href="/assets/js/89.a02cd589.js"><link rel="prefetch" href="/assets/js/90.fd9b6cb2.js"><link rel="prefetch" href="/assets/js/91.f4470b86.js"><link rel="prefetch" href="/assets/js/92.f43e5792.js"><link rel="prefetch" href="/assets/js/93.5516385b.js"><link rel="prefetch" href="/assets/js/94.f616edec.js"><link rel="prefetch" href="/assets/js/95.95494d82.js"><link rel="prefetch" href="/assets/js/96.5cefcb17.js"><link rel="prefetch" href="/assets/js/97.7c95cc22.js"><link rel="prefetch" href="/assets/js/98.e20a81b0.js"><link rel="prefetch" href="/assets/js/99.cf69276b.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.ae6b1de9.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.96eb8417.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端工程化详解</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/project/" class="nav-link">
+  工程化入门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化进阶" class="dropdown-title"><span class="title">工程化进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化进阶" class="mobile-dropdown-title"><span class="title">工程化进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/advanced/rollup/" class="nav-link router-link-active">
+  Rollup
+</a></li><li class="dropdown-item"><!----> <a href="/advanced/esbuild/" class="nav-link">
+  esbuild
+</a></li></ul></div></div><div class="nav-item"><a href="/guide/" class="nav-link">
+  代码规范
+</a></div><div class="nav-item"><a href="https://origin.duanhl.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  源码分析
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/monitor/" class="nav-link">
+  前端监控系统
+</a></div><div class="nav-item"><a href="https://github.com/CrayonPig/front-end-guide" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/project/" class="nav-link">
+  工程化入门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化进阶" class="dropdown-title"><span class="title">工程化进阶</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化进阶" class="mobile-dropdown-title"><span class="title">工程化进阶</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/advanced/rollup/" class="nav-link router-link-active">
+  Rollup
+</a></li><li class="dropdown-item"><!----> <a href="/advanced/esbuild/" class="nav-link">
+  esbuild
+</a></li></ul></div></div><div class="nav-item"><a href="/guide/" class="nav-link">
+  代码规范
+</a></div><div class="nav-item"><a href="https://origin.duanhl.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  源码分析
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/monitor/" class="nav-link">
+  前端监控系统
+</a></div><div class="nav-item"><a href="https://github.com/CrayonPig/front-end-guide" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/advanced/rollup/" aria-current="page" class="sidebar-link">Rollup 概述</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>使用介绍</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/advanced/rollup/cmd.html" class="sidebar-link">命令行调用</a></li><li><a href="/advanced/rollup/code.html" class="sidebar-link">配置文件</a></li><li><a href="/advanced/rollup/config.html" class="sidebar-link">常用配置</a></li><li><a href="/advanced/rollup/api.html" class="sidebar-link">JavaScript API</a></li><li><a href="/advanced/rollup/usePlugin.html" class="sidebar-link">使用插件</a></li></ul></section></li><li><a href="/advanced/rollup/plugin.html" aria-current="page" class="active sidebar-link">插件机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#rollup插件概述" class="sidebar-link">Rollup插件概述</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#约定" class="sidebar-link">约定</a></li><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#属性" class="sidebar-link">属性</a></li></ul></li><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#钩子函数的特点" class="sidebar-link">钩子函数的特点</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#钩子函数的调用时机" class="sidebar-link">钩子函数的调用时机</a></li><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#钩子函数的执行方式" class="sidebar-link">钩子函数的执行方式</a></li><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#钩子函数也可以是对象" class="sidebar-link">钩子函数也可以是对象</a></li><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#构建钩子执行顺序" class="sidebar-link">构建钩子执行顺序</a></li><li class="sidebar-sub-header"><a href="/advanced/rollup/plugin.html#输出钩子执行顺序" class="sidebar-link">输出钩子执行顺序</a></li></ul></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="插件机制"><a href="#插件机制" class="header-anchor">#</a> 插件机制</h1> <h2 id="rollup插件概述"><a href="#rollup插件概述" class="header-anchor">#</a> Rollup插件概述</h2> <blockquote><p>Rollup 插件是一个对象，具有 <a href="https://cn.rollupjs.org/plugin-development/#properties" target="_blank" rel="noopener noreferrer">属性<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>、<a href="https://cn.rollupjs.org/plugin-development/#build-hooks" target="_blank" rel="noopener noreferrer">构建钩子<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 和 <a href="https://cn.rollupjs.org/plugin-development/#output-generation-hooks" target="_blank" rel="noopener noreferrer">输出生成钩子<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 中的一个或多个，并遵循我们的 <a href="https://cn.rollupjs.org/plugin-development/#conventions" target="_blank" rel="noopener noreferrer">约定<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。插件应作为一个导出一个函数的包进行发布，该函数可以使用插件特定的选项进行调用并返回此类对象。</p></blockquote> <p>简单来说，rollup插件一般会做成一个函数，函数返回一个对象，返回的对象中包含一些属性和不同阶段的钩子函数。</p> <h3 id="约定"><a href="#约定" class="header-anchor">#</a> 约定</h3> <p>插件应该有一个明确的名称，并以<code>rollup-plugin-</code>作为前缀。</p> <h3 id="属性"><a href="#属性" class="header-anchor">#</a> 属性</h3> <p>name：插件的名称，用于在警告和错误消息中标识插件。</p> <p>version：插件的版本</p> <h2 id="钩子函数的特点"><a href="#钩子函数的特点" class="header-anchor">#</a> 钩子函数的特点</h2> <ul><li>钩子函数区分不同的调用时机</li> <li>钩子函数是有执行顺序的</li> <li>钩子函数有不同的执行方式</li> <li>钩子函数也可以是对象的形式</li> <li>对象形式的钩子函数可以改变钩子的执行，让不同插件的同名钩子函数获取不通的执行先后</li></ul> <h3 id="钩子函数的调用时机"><a href="#钩子函数的调用时机" class="header-anchor">#</a> 钩子函数的调用时机</h3> <p>这里的调用时机，其实就是以我们上面的API，build和output两大工作流的不同阶段进行分类。根据这两个不同阶段，rollup提供的不同的函数让我们调用</p> <ul><li>const bundle = await rollup.rollup(inputOptions) 执行期间的构建钩子函数 - <a href="https://cn.rollupjs.org/plugin-development/#build-hooks" target="_blank" rel="noopener noreferrer">build-hooks<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>await bundle.generate(outputOptions)/write(outputOptions) 执行期间的输出钩子函数-<a href="https://cn.rollupjs.org/plugin-development/#output-generation-hooks" target="_blank" rel="noopener noreferrer">output-generation-hooks<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h3 id="钩子函数的执行方式"><a href="#钩子函数的执行方式" class="header-anchor">#</a> 钩子函数的执行方式</h3> <p>除了上面简单的划分为两个阶段的调用时机之外，我们还可以以钩子函数的执行方式来分类。</p> <ul><li><code>async/sync</code>：异步/同步钩子，async标记的钩子可以返回一个解析为相同类型的值的 Promise；否则，该钩子被标记为 <code>sync</code>。</li> <li><code>first</code>：如果有多个插件实现此钩子，则钩子按顺序运行，直到钩子返回一个不是 <code>null</code> 或 <code>undefined</code> 的值。</li> <li><code>sequential</code>：如果有多个插件实现此钩子，则所有这些钩子将按指定的插件顺序运行。如果钩子是 <code>async</code>，则此类后续钩子将等待当前钩子解决后再运行。</li> <li><code>parallel</code>：如果有多个插件实现此钩子，则所有这些钩子将按指定的插件顺序运行。如果钩子是 <code>async</code>，则此类后续钩子将并行运行，而不是等待当前钩子。</li></ul> <h3 id="钩子函数也可以是对象"><a href="#钩子函数也可以是对象" class="header-anchor">#</a> 钩子函数也可以是对象</h3> <p>除了函数之外，钩子也可以是对象。在这种情况下，实际的钩子函数（或 <code>banner/footer/intro/outro</code> 的值）必须指定为 <code>handler</code>。这允许你提供更多的可选属性，以改变钩子的执行：</p> <ul><li>order: &quot;pre&quot; | &quot;post&quot; | null</li></ul> <p>如果有多个插件实现此钩子，则可以先运行此插件（<code>&quot;pre&quot;</code>），最后运行此插件（<code>&quot;post&quot;</code>），或在用户指定的位置运行（没有值或 <code>null</code>）。</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">resolveFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token punctuation">{</span>
+		<span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'resolve-first'</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">resolveId</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token literal-property property">order</span><span class="token operator">:</span> <span class="token string">'pre'</span><span class="token punctuation">,</span>
+			<span class="token function">handler</span><span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332719-67250">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="export default function resolveFirst() {
+	return {
+		name: 'resolve-first',
+		resolveId: {
+			order: 'pre',
+			handler(source) {
+				console.log(source);
+				return null;
+			}
+		}
+	};
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332719-67250" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="构建钩子执行顺序"><a href="#构建钩子执行顺序" class="header-anchor">#</a> 构建钩子执行顺序</h3> <p><img src="/assets/img/image-20230919180002325.5e7f3185.png" alt="image-20230919180002325"></p> <ol><li>通过 <code>options</code> 钩子读取配置，并进行配置的转换，得到处理后的配置对象</li> <li>调用 <code>buildStart</code> 钩子，考虑了所有 <code>options</code>钩子配置的转换，包含未设置选项的正确默认值，正式开始构建流程</li> <li>调用 <code>resolveId</code> 钩子解析模块文件路径。rollup中模块文件的id就是文件地址，所以，类似resolveId这种就是解析文件地址的意思。从<code>inputOption</code>的<code>input</code>配置指定的入口文件开始，每当匹配到引入外部模块的语句(如：<code>import moudleA from './moduleA'</code>)便依次执行注册插件中的每一个 <code>resolveId</code> 钩子，直到某一个插件中的 <code>resolveId</code> 执行完后返回非 <code>null</code> 或非 <code>undefined</code> 的值，将停止执行后续插件的 <code>resolveId</code> 逻辑并进入下一个钩子</li> <li>调用<code>load</code>钩子加载模块内容，<code>resolveId</code>中的路径一般为相对路径，load中的路径为处理之后的绝对路径</li> <li>接着判断当前解析的模块是否存在缓存，若不存在则执行所有的 <code>transform</code> 钩子来对模块内容进行进行自定义的转换；若存在则判断<code>shouldTransformCachedModule</code>属性，true则执行所有的 <code>transform</code> 钩子，false则进入<code>moduleParsed</code>钩子逻辑</li> <li>拿到最后的模块内容，进行 <code>AST</code> 分析，调用 <code>moduleParsed</code> 钩子。如果内部没有<code>imports</code>内容，进入<code>buildEnd</code>环节。如果还有<code>imports</code>内容则继续，如果是普通的 <code>import</code>，则执行<code>resolveId</code> 钩子，继续回到<strong>步骤3-调用resolveId</strong>；如果是动态 <code>import</code>，则执行<code>resolveDynamicImport</code> 钩子解析路径，如果解析成功，则回到<strong>步骤4-load</strong>加载模块，否则回到步骤3通过 <code>resolveId</code> 解析路径</li> <li>直到所有的 <code>import</code> 都解析完毕，<code>Rollup</code> 执行<code>buildEnd</code>钩子，Build阶段结束</li></ol> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">// rollup-plugin-example.js</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">myExample</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'my-example'</span><span class="token punctuation">,</span>
+    <span class="token function">options</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🎉 -- options:&quot;</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">buildStart</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;✨ -- buildStart:&quot;</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">resolveId</span> <span class="token punctuation">(</span><span class="token parameter">source<span class="token punctuation">,</span>importer</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🚀 -- resolveId(source):&quot;</span><span class="token punctuation">,</span> source<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🚀 -- resolveId(importer):&quot;</span><span class="token punctuation">,</span> importer<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">load</span> <span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🌈 ~ id:&quot;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">code<span class="token punctuation">,</span>id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🌟 -- transform&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;---&quot;</span><span class="token punctuation">,</span>code<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;---&quot;</span><span class="token punctuation">,</span>id<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">moduleParsed</span> <span class="token punctuation">(</span><span class="token parameter">info</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;⭐️ -- moduleParsed:&quot;</span><span class="token punctuation">,</span> info<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">buildEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;😁 -- buildEnd&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332719-6553">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// rollup-plugin-example.js
+
+export default function myExample () {
+  return {
+    name: 'my-example',
+    options (options) {
+      console.log(&quot;🎉 -- options:&quot;, options)
+    },
+    buildStart (options) {
+      console.log(&quot;✨ -- buildStart:&quot;, options)
+    },
+    resolveId (source,importer) {
+      console.log(&quot;🚀 -- resolveId(source):&quot;, source)
+      console.log(&quot;🚀 -- resolveId(importer):&quot;, importer)
+      return null; 
+    },
+    load (id) {
+      console.log(&quot;🌈 ~ id:&quot;, id)
+      return null; 
+    },
+    transform(code,id) { 
+      console.log(&quot;🌟 -- transform&quot;);
+      console.log(&quot;---&quot;,code)
+      console.log(&quot;---&quot;,id)
+    },
+    moduleParsed (info) {
+      console.log(&quot;⭐️ -- moduleParsed:&quot;, info)
+    },
+    buildEnd() { 
+      console.log(&quot;😁 -- buildEnd&quot;);
+    }
+  };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332719-6553" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h4 id="调用虚拟模块插件示例"><a href="#调用虚拟模块插件示例" class="header-anchor">#</a> 调用虚拟模块插件示例</h4> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">const</span> virtualModuleId <span class="token operator">=</span> <span class="token string">'virtual-module'</span><span class="token punctuation">;</span>
+<span class="token comment">// rollup约定插件使用“虚拟模块”，使用\0前缀模块 ID。这可以防止其他插件尝试处理它。</span>
+<span class="token keyword">const</span> resolvedVirtualModuleId <span class="token operator">=</span> <span class="token string">'\0'</span> <span class="token operator">+</span> virtualModuleId<span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">virtualModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'virtual-module'</span><span class="token punctuation">,</span> 
+    <span class="token function">resolveId</span> <span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>source <span class="token operator">===</span> <span class="token string">'virtual-module'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">return</span> resolvedVirtualModuleId<span class="token punctuation">;</span> <span class="token comment">// 告诉Rollup，这个ID是外部模块，不要在此处查找它</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 其他ID应按通常方式处理</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">load</span> <span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🌈 - id:&quot;</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">===</span> resolvedVirtualModuleId<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token comment">// return 'export default &quot;This is virtual!&quot;'; // 告诉Rollup，如何加载此模块</span>
+        <span class="token keyword">return</span> <span class="token string">'export default function fib(n) { return n &lt;= 1 ? n : fib(n - 1) + fib(n - 2); }'</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// 其他ID应按通常方式处理</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332720-85928">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="const virtualModuleId = 'virtual-module';
+// rollup约定插件使用“虚拟模块”，使用\0前缀模块 ID。这可以防止其他插件尝试处理它。
+const resolvedVirtualModuleId = '\0' + virtualModuleId;
+export default function virtualModule() {
+  return {
+    name: 'virtual-module', 
+    resolveId (source) {
+      if (source === 'virtual-module') { 
+        return resolvedVirtualModuleId; // 告诉Rollup，这个ID是外部模块，不要在此处查找它
+      }
+      return null; // 其他ID应按通常方式处理
+    },
+    load (id) {
+      console.log(&quot;🌈 - id:&quot;, id)
+      if (id === resolvedVirtualModuleId) { 
+        // return 'export default &quot;This is virtual!&quot;'; // 告诉Rollup，如何加载此模块
+        return 'export default function fib(n) { return n &lt;= 1 ? n : fib(n - 1) + fib(n - 2); }'
+      }
+      return null; // 其他ID应按通常方式处理
+    },
+  };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332720-85928" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p><strong>界面调用</strong></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">import</span> fib <span class="token keyword">from</span> <span class="token string">&quot;virtual-module&quot;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">fib</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332720-39007">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import fib from &quot;virtual-module&quot;;
+console.log(fib(10))
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332720-39007" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="json插件示例"><a href="#json插件示例" class="header-anchor">#</a> JSON插件示例</h4> <p>rollup默认是不能直接读取json文件的内容的，我们自己写一个插件处理一下，不过写这个插件之前，有一些小知识点需要补充一下</p> <p><a href="https://github.com/rollup/plugins/tree/master/packages/pluginutils" target="_blank" rel="noopener noreferrer">@rollup/pluginutils<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> rollup官方提供的工具插件,里面有一些制作插件常用的方法</p> <p><strong>安装</strong></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>pnpm add @rollup<span class="token operator">/</span>plugin<span class="token operator">-</span>commonjs @rollup<span class="token operator">/</span>plugin<span class="token operator">-</span>node<span class="token operator">-</span>resolve @rollup<span class="token operator">/</span>pluginutils <span class="token operator">-</span><span class="token constant">D</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332720-88109">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="pnpm add @rollup/plugin-commonjs @rollup/plugin-node-resolve @rollup/pluginutils -D
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332720-88109" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><a href="https://cn.rollupjs.org/plugin-development/#plugin-context" target="_blank" rel="noopener noreferrer">插件上下文<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>这个其实也是插件中很常用的一些api，可以通过 <code>this</code> 从大多数<a href="https://cn.rollupjs.org/plugin-development/#build-hooks" target="_blank" rel="noopener noreferrer">钩子<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中访问一些实用函数和信息位</p> <p><strong>rollup-plugin-json</strong></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createFilter<span class="token punctuation">,</span>dataToEsm <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@rollup/pluginutils'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">myJson</span><span class="token punctuation">(</span><span class="token parameter">options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// createFilter 返回一个函数，这个函数接收一个id路径参数，返回一个布尔值</span>
+  <span class="token comment">// 这个布尔值表示是否要处理这个id路径</span>
+  <span class="token comment">// rollup 推荐每一个 transform 类型的插件都需要提供 include 和 exclude 选项，生成过滤规则</span>
+  <span class="token keyword">const</span> filter <span class="token operator">=</span> <span class="token function">createFilter</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>include<span class="token punctuation">,</span> options<span class="token punctuation">.</span>exclude<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'rollup-plugin-json'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">transform</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">order</span><span class="token operator">:</span> <span class="token string">&quot;pre&quot;</span><span class="token punctuation">,</span>
+      <span class="token function">handler</span><span class="token punctuation">(</span><span class="token parameter">code<span class="token punctuation">,</span> id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">filter</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token operator">||</span> path<span class="token punctuation">.</span><span class="token function">extname</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token string">'.json'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> parse <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token comment">// dataToEsm 将数据转换成esm模块</span>
+            <span class="token comment">// 其实就是 export default &quot;xxx&quot;</span>
+            <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token function">dataToEsm</span><span class="token punctuation">(</span>parse<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+            <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">mappings</span><span class="token operator">:</span> <span class="token string">''</span> <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+          <span class="token keyword">const</span> message <span class="token operator">=</span> <span class="token string">'Could not parse JSON file'</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">{</span> message<span class="token punctuation">,</span> id<span class="token punctuation">,</span> <span class="token literal-property property">cause</span><span class="token operator">:</span> err <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332720-61417">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import { createFilter,dataToEsm } from '@rollup/pluginutils';
+import path from 'path';
+
+export default function myJson(options = {}) {
+  // createFilter 返回一个函数，这个函数接收一个id路径参数，返回一个布尔值
+  // 这个布尔值表示是否要处理这个id路径
+  // rollup 推荐每一个 transform 类型的插件都需要提供 include 和 exclude 选项，生成过滤规则
+  const filter = createFilter(options.include, options.exclude);
+  return {
+    name: 'rollup-plugin-json',
+    transform: {
+      order: &quot;pre&quot;,
+      handler(code, id) {
+        if (!filter(id) || path.extname(id) !== '.json') return null;
+        try {
+          const parse = JSON.stringify(JSON.parse(code));
+          return {
+            // dataToEsm 将数据转换成esm模块
+            // 其实就是 export default &quot;xxx&quot;
+            code: dataToEsm(parse), 
+            map: { mappings: '' }
+          };
+        } catch (err) { 
+          const message = 'Could not parse JSON file';
+          this.error({ message, id, cause: err });
+          return null;
+        }
+      }
+    }
+  };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332720-61417" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><p><strong>界面调用</strong></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">import</span> pkg <span class="token keyword">from</span> <span class="token string">&quot;../package.json&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> test <span class="token keyword">from</span> <span class="token string">&quot;../test.json&quot;</span><span class="token punctuation">;</span> <span class="token comment">// 错误json格式演示</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pkg<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332720-96970">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import pkg from &quot;../package.json&quot;;
+import test from &quot;../test.json&quot;; // 错误json格式演示
+console.log(pkg.name)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332720-96970" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="插件上下文"><a href="#插件上下文" class="header-anchor">#</a> <a href="https://cn.rollupjs.org/plugin-development/#plugin-context" target="_blank" rel="noopener noreferrer">插件上下文<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h4> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createFilter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@rollup/pluginutils'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">customPlugin</span><span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> filter <span class="token operator">=</span> <span class="token function">createFilter</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>include<span class="token punctuation">,</span> options<span class="token punctuation">.</span>exclude<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'custom-plugin'</span><span class="token punctuation">,</span>
+
+    <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">code<span class="token punctuation">,</span> id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">filter</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> parsedCode <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 解析代码,获取AST</span>
+
+      <span class="token keyword">const</span> source <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>code<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>parsedCode<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+      
+      <span class="token keyword">const</span> fileName <span class="token operator">=</span> id<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">.</span>emitFile<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">emitFile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'asset'</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">fileName</span><span class="token operator">:</span> fileName <span class="token operator">+</span> <span class="token string">'.txt'</span><span class="token punctuation">,</span>
+          source<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332720-33320">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import { createFilter } from '@rollup/pluginutils';
+
+export default function customPlugin(options) {
+  const filter = createFilter(options.include, options.exclude);
+
+  return {
+    name: 'custom-plugin',
+
+    transform(code, id) {
+      if (!filter(id)) {
+        return null;
+      }
+
+      const parsedCode = this.parse(code); // 解析代码,获取AST
+
+      const source = `${code}\n\n${JSON.stringify(parsedCode, null, 2)}`;
+      
+      const fileName = id.split('/').pop();
+
+      if (options.emitFile) {
+        this.emitFile({
+          type: 'asset',
+          fileName: fileName + '.txt',
+          source,
+        });
+      }
+    },
+  };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332720-33320" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h4 id="图片读取"><a href="#图片读取" class="header-anchor">#</a> 图片读取</h4> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createFilter<span class="token punctuation">,</span>dataToEsm <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@rollup/pluginutils&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> extname<span class="token punctuation">,</span>resolve<span class="token punctuation">,</span>basename<span class="token punctuation">,</span>relative<span class="token punctuation">,</span>normalize<span class="token punctuation">,</span>sep <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;path&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">&quot;fs&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> svgToMiniDataURI <span class="token keyword">from</span> <span class="token string">&quot;mini-svg-data-uri&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> defaults <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">fileSize</span><span class="token operator">:</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token string">&quot;./dist&quot;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">include</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> mimeTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">&quot;.png&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/png&quot;</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;.jpg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/jpeg&quot;</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;.jpeg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/jpeg&quot;</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;.gif&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/gif&quot;</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;.svg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/svg+xml&quot;</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;.ico&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/x-icon&quot;</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;.webp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/webp&quot;</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;.avif&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/avif&quot;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">getDataUri</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> format<span class="token punctuation">,</span> isSvg<span class="token punctuation">,</span> mime<span class="token punctuation">,</span> source <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+  isSvg <span class="token operator">?</span> <span class="token function">svgToMiniDataURI</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">data:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>mime<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>format<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>source<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">const</span> <span class="token function-variable function">ensureDirExists</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">dirPath</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> fs<span class="token punctuation">.</span>promises<span class="token punctuation">.</span><span class="token function">access</span><span class="token punctuation">(</span>dirPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token comment">// 文件夹不存在就创建文件夹</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">await</span> fs<span class="token punctuation">.</span>promises<span class="token punctuation">.</span><span class="token function">mkdir</span><span class="token punctuation">(</span>dirPath<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">recursive</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">myImage</span><span class="token punctuation">(</span><span class="token parameter">opts <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">const</span> options <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> defaults<span class="token punctuation">,</span> opts<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> filter <span class="token operator">=</span> <span class="token function">createFilter</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>include<span class="token punctuation">,</span> options<span class="token punctuation">.</span>exclude<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;my-image&quot;</span><span class="token punctuation">,</span>
+    <span class="token keyword">async</span> <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">code<span class="token punctuation">,</span> id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">filter</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      
+      <span class="token comment">// 获取后缀</span>
+      <span class="token keyword">const</span> ext <span class="token operator">=</span> <span class="token function">extname</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 判断是否是图片</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>mimeTypes<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>ext<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 获取图片的mime类型</span>
+      <span class="token keyword">const</span> mime <span class="token operator">=</span> mimeTypes<span class="token punctuation">[</span>ext<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token comment">// 判断是否svg</span>
+      <span class="token keyword">const</span> isSvg <span class="token operator">=</span> mime <span class="token operator">===</span> mimeTypes<span class="token punctuation">[</span><span class="token string">&quot;.svg&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token comment">// 图片format格式</span>
+      <span class="token keyword">const</span> format <span class="token operator">=</span> isSvg <span class="token operator">?</span> <span class="token string">&quot;utf-8&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;base64&quot;</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 目标路径</span>
+      <span class="token keyword">const</span> assetsPath <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> options<span class="token punctuation">.</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;---&quot;</span><span class="token punctuation">,</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;---&quot;</span><span class="token punctuation">,</span>options<span class="token punctuation">.</span>target<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;---&quot;</span><span class="token punctuation">,</span> assetsPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">//获取文件名</span>
+      <span class="token keyword">const</span> fileName <span class="token operator">=</span> <span class="token function">basename</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 最终文件路径</span>
+      <span class="token keyword">const</span> filePath <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>assetsPath<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;===&quot;</span><span class="token punctuation">,</span> filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">let</span> relativePath <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span><span class="token function">relative</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> filePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      relativePath <span class="token operator">=</span> relativePath<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>relativePath<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>sep<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>relativePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 如果图片文件过大，就应该直接拷贝文件，返回文件路径</span>
+        <span class="token comment">// 读取图片文件大小与设置的大小进行比较</span>
+        <span class="token keyword">const</span> stat <span class="token operator">=</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span>promises<span class="token punctuation">.</span><span class="token function">stat</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>stat<span class="token punctuation">.</span>size <span class="token operator">&gt;</span> options<span class="token punctuation">.</span>fileSize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 文件的拷贝，以及对象的返回</span>
+          <span class="token comment">// 文件拷贝，无非就是文件源路径，目标路径</span>
+          <span class="token comment">//copyFile 拷贝文件地址的文件夹必须存在</span>
+          <span class="token comment">// 如果文件夹不存在，那么就创建文件夹</span>
+          <span class="token keyword">const</span> dirExists <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">ensureDirExists</span><span class="token punctuation">(</span>assetsPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          dirExists <span class="token operator">&amp;&amp;</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span>promises<span class="token punctuation">.</span><span class="token function">copyFile</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token function">dataToEsm</span><span class="token punctuation">(</span>relativePath<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">//返回拷贝之后处理的路径</span>
+            <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">mappings</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 否则转换为base64格式</span>
+          <span class="token comment">// 读取文件</span>
+          <span class="token keyword">const</span> source <span class="token operator">=</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span>promises<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> format<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token function">dataToEsm</span><span class="token punctuation">(</span><span class="token function">getDataUri</span><span class="token punctuation">(</span><span class="token punctuation">{</span> format<span class="token punctuation">,</span> isSvg<span class="token punctuation">,</span> mime<span class="token punctuation">,</span> source <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">mappings</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">const</span> message <span class="token operator">=</span> <span class="token string">&quot;图片转换失败:&quot;</span> <span class="token operator">+</span> id<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">{</span> message<span class="token punctuation">,</span> id<span class="token punctuation">,</span> <span class="token literal-property property">cause</span><span class="token operator">:</span> err <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332721-47604">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import { createFilter,dataToEsm } from &quot;@rollup/pluginutils&quot;;
+import { extname,resolve,basename,relative,normalize,sep } from &quot;path&quot;;
+import fs from &quot;fs&quot;;
+import svgToMiniDataURI from &quot;mini-svg-data-uri&quot;;
+
+const defaults = {
+  fileSize: 1024 * 4,
+  target: &quot;./dist&quot;,
+  include: null,
+  exclude: null,
+}
+
+const mimeTypes = {
+  &quot;.png&quot;: &quot;image/png&quot;,
+  &quot;.jpg&quot;: &quot;image/jpeg&quot;,
+  &quot;.jpeg&quot;: &quot;image/jpeg&quot;,
+  &quot;.gif&quot;: &quot;image/gif&quot;,
+  &quot;.svg&quot;: &quot;image/svg+xml&quot;,
+  &quot;.ico&quot;: &quot;image/x-icon&quot;,
+  &quot;.webp&quot;: &quot;image/webp&quot;,
+  &quot;.avif&quot;: &quot;image/avif&quot;
+}
+
+const getDataUri = ({ format, isSvg, mime, source }) =&gt;
+  isSvg ? svgToMiniDataURI(source) : `data:${mime};${format},${source}`;
+
+
+const ensureDirExists = async (dirPath) =&gt; { 
+  try {
+    await fs.promises.access(dirPath);
+    return true;
+  } catch (err) { 
+    // 文件夹不存在就创建文件夹
+    try {
+      await fs.promises.mkdir(dirPath, { recursive: true });
+      return true;
+    }
+    catch (err) { 
+      console.error(err);
+      return false;
+    }
+    
+  }
+}
+
+export default function myImage(opts = {}) { 
+  const options = Object.assign({}, defaults, opts);
+  const filter = createFilter(options.include, options.exclude);
+  return {
+    name: &quot;my-image&quot;,
+    async transform(code, id) { 
+      if (!filter(id)) return null;
+      
+      // 获取后缀
+      const ext = extname(id);
+      // 判断是否是图片
+      if(!mimeTypes.hasOwnProperty(ext)) {
+        return null;
+      }
+
+      // 获取图片的mime类型
+      const mime = mimeTypes[ext];
+      // 判断是否svg
+      const isSvg = mime === mimeTypes[&quot;.svg&quot;];
+      // 图片format格式
+      const format = isSvg ? &quot;utf-8&quot; : &quot;base64&quot;;
+
+      // 目标路径
+      const assetsPath = resolve(process.cwd(), options.target);
+      console.log(&quot;---&quot;,process.cwd())
+      console.log(&quot;---&quot;,options.target)
+      console.log(&quot;---&quot;, assetsPath);
+
+      //获取文件名
+      const fileName = basename(id);
+      // 最终文件路径
+      const filePath = resolve(assetsPath, fileName);
+      console.log(&quot;===&quot;, filePath);
+
+      let relativePath = normalize(relative(process.cwd(), filePath));
+      relativePath = relativePath.substring(relativePath.indexOf(sep) + 1);
+
+      console.log(relativePath);
+
+      try {
+
+        // 如果图片文件过大，就应该直接拷贝文件，返回文件路径
+        // 读取图片文件大小与设置的大小进行比较
+        const stat = await fs.promises.stat(id);
+        if (stat.size &gt; options.fileSize) {
+          // 文件的拷贝，以及对象的返回
+          // 文件拷贝，无非就是文件源路径，目标路径
+          //copyFile 拷贝文件地址的文件夹必须存在
+          // 如果文件夹不存在，那么就创建文件夹
+          const dirExists = await ensureDirExists(assetsPath);
+          dirExists &amp;&amp; await fs.promises.copyFile(id, filePath);
+          return {
+            code: dataToEsm(relativePath), //返回拷贝之后处理的路径
+            map: { mappings: &quot;&quot; }
+          }
+
+        } else {
+          // 否则转换为base64格式
+          // 读取文件
+          const source = await fs.promises.readFile(id, format);
+
+          return {
+            code: dataToEsm(getDataUri({ format, isSvg, mime, source })),
+            map: { mappings: &quot;&quot; }
+          }
+        }
+
+      } catch (err) { 
+        const message = &quot;图片转换失败:&quot; + id;
+        this.error({ message, id, cause: err });
+        return null;
+      }
+
+    }
+  }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332721-47604" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br></div></div><h3 id="输出钩子执行顺序"><a href="#输出钩子执行顺序" class="header-anchor">#</a> 输出钩子执行顺序</h3> <p><img src="/assets/img/image-20230920110457237.65d0299c.png" alt="image-20230920110457237"></p> <ol><li>执行所有插件的 <code>outputOptions</code> 钩子函数，对 <code>output</code> 配置进行转换</li> <li>执行 <code>renderStart</code>，该钩子读取所有outputOptions钩子的转换之后的输出选项</li> <li>扫描 <code>动态import</code> 语句执行 <code>renderDynamicImport</code> 钩子，让开发者能自定义<code>动态import</code>的内容与行为</li> <li>并发执行所有插件的 <code>banner、footer、intro、outro</code> 钩子，这四个钩子功能简单，就是往打包产物的固定位置(比如头部和尾部)插入一些自定义的内容，比如版本号、作者、内容、项目介绍等等</li> <li>是否存在 <code>import.meta</code> 语句，没有就直接进入下一步，否则：对于<code>import.meta.url</code>调用 <code>resolveFileUrl</code> 来自定义 url 解析逻辑。对于<code>import.meta</code>调用 <code>resolveImportMeta</code> 来进行自定义元信息解析</li> <li>生成chunk调用<code>renderChunk</code>钩子，便于在该钩子中进行自定义操作。如果生成的chunk文件有hash值，执行 <code>augmentChunkHash</code> 钩子，来决定是否更改 <code>chunk</code> 的哈希值。</li> <li>调用 <code>generateBundle</code> 钩子，这个钩子的入参里面会包含所有的打包产物信息，包括 <code>chunk</code> (打包后的代码)、<code>asset</code>(最终的静态资源文件)。在这个钩子中你做自定义自己的操作，比如：可以在这里删除一些 <code>chunk</code> 或者 <code>asset</code>，最终被删除的内容将不会作为产物输出</li> <li>上节课讲解的javascript api---<code>rollup.rollup</code>方法会返回一个<code>bundle</code>对象，<code>bundle</code>对象的write方法，会触发<code>writeBundle</code>钩子，传入所有的打包产物信息，包括 <code>chunk</code> 和 <code>asset</code>，与<code>generateBundle</code>钩子非常相似。唯一的区别是<code>writeBundle</code>钩子执行的时候，产物已经输出了。而 <code>generateBundle</code> 执行的时候产物还并没有输出。简单来说，顺序是：<code>generateBundle---&gt;输出并保存产物到磁盘---&gt;writeBundle</code></li> <li>当<code>bundle</code>的<code>close</code>方法被调用时，会触发<code>closeBundle</code>钩子，这个output阶段结束</li></ol> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">myExample2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'my-example2'</span><span class="token punctuation">,</span>
+    <span class="token function">outputOptions</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🎉 ~ options:&quot;</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">renderStart</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;✨ ~ renderStart:&quot;</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">renderDynamicImport</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;✨~ renderDynamicImport:&quot;</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">banner</span><span class="token punctuation">(</span><span class="token parameter">chunk</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🔥 ~ banner(chunk):&quot;</span><span class="token punctuation">,</span> chunk<span class="token punctuation">)</span>
+      <span class="token keyword">const</span> comment <span class="token operator">=</span> chunk<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">&quot;index&quot;</span> <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/*
+* 
+* 　　┏┓　　　┏┓+ +
+* 　┏┛┻━━━┛┻┓ + +
+* 　┃　　　　　　　┃ 　
+* 　┃　　　━　　　┃ ++ + + +
+*  ████━████ ┃+
+* 　┃　　　　　　　┃ +
+* 　┃　　　┻　　　┃
+* 　┃　　　　　　　┃ + +
+* 　┗━┓　　　┏━┛
+* 　　　┃　　　┃　　　　　　　　　　　
+* 　　　┃　　　┃ + + + +
+* 　　　┃　　　┃
+* 　　　┃　　　┃ +  神兽保佑
+* 　　　┃　　　┃    代码无bug　　
+* 　　　┃　　　┃　　+　　　　　　　　　
+* 　　　┃　 　　┗━━━┓ + +
+* 　　　┃ 　　　　　　　┣┓
+* 　　　┃ 　　　　　　　┏┛
+* 　　　┗┓┓┏━┳┓┏┛ + + + +
+* 　　　　┃┫┫　┃┫┫
+* 　　　　┗┻┛　┗┻┛+ + + +
+* 
+*/</span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> comment<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">renderChunk</span> <span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🚀 ~ source:&quot;</span><span class="token punctuation">,</span> source<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">augmentChunkHash</span> <span class="token punctuation">(</span><span class="token parameter">chunk</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🎉 ~ augmentChunkHash:&quot;</span><span class="token punctuation">,</span> chunk<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">generateBundle</span><span class="token punctuation">(</span><span class="token parameter">options<span class="token punctuation">,</span> bundle</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🌈 ~ options:&quot;</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;🌈 ~ bundle:&quot;</span><span class="token punctuation">,</span> bundle<span class="token punctuation">)</span>
+      Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>bundle<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">&quot;sum&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+          <span class="token comment">//删除对象中的这个键值对</span>
+          <span class="token keyword">delete</span> bundle<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">closeBundle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;😁 ~ closeBundle&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332722-64838">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="export default function myExample2() {
+  return {
+    name: 'my-example2',
+    outputOptions (options) {
+      console.log(&quot;🎉 ~ options:&quot;, options)
+    },
+    renderStart (options) {
+      console.log(&quot;✨ ~ renderStart:&quot;, options)
+    },
+    renderDynamicImport (options) {
+      console.log(&quot;✨~ renderDynamicImport:&quot;, options)
+    },
+    banner(chunk) { 
+      console.log(&quot;🔥 ~ banner(chunk):&quot;, chunk)
+      const comment = chunk.name === &quot;index&quot; ? `/*
+* 
+* 　　┏┓　　　┏┓+ +
+* 　┏┛┻━━━┛┻┓ + +
+* 　┃　　　　　　　┃ 　
+* 　┃　　　━　　　┃ ++ + + +
+*  ████━████ ┃+
+* 　┃　　　　　　　┃ +
+* 　┃　　　┻　　　┃
+* 　┃　　　　　　　┃ + +
+* 　┗━┓　　　┏━┛
+* 　　　┃　　　┃　　　　　　　　　　　
+* 　　　┃　　　┃ + + + +
+* 　　　┃　　　┃
+* 　　　┃　　　┃ +  神兽保佑
+* 　　　┃　　　┃    代码无bug　　
+* 　　　┃　　　┃　　+　　　　　　　　　
+* 　　　┃　 　　┗━━━┓ + +
+* 　　　┃ 　　　　　　　┣┓
+* 　　　┃ 　　　　　　　┏┛
+* 　　　┗┓┓┏━┳┓┏┛ + + + +
+* 　　　　┃┫┫　┃┫┫
+* 　　　　┗┻┛　┗┻┛+ + + +
+* 
+*/` : &quot;&quot;;
+      return comment;
+    },
+    renderChunk (source) {
+      console.log(&quot;🚀 ~ source:&quot;, source)
+      return null; 
+    },
+    augmentChunkHash (chunk) {
+      console.log(&quot;🎉 ~ augmentChunkHash:&quot;, chunk)
+    },
+    generateBundle(options, bundle) { 
+      console.log(&quot;🌈 ~ options:&quot;, options)
+      console.log(&quot;🌈 ~ bundle:&quot;, bundle)
+      Object.keys(bundle).forEach(key =&gt; { 
+        if (key.includes(&quot;sum&quot;)) { 
+          //删除对象中的这个键值对
+          delete bundle[key];
+        }
+      });
+    },
+    closeBundle() { 
+      console.log(&quot;😁 ~ closeBundle&quot;);
+    }
+  };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332722-64838" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br></div></div><h4 id="打包大小和时间示例"><a href="#打包大小和时间示例" class="header-anchor">#</a> 打包大小和时间示例：</h4> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">bundleStats</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> startTime<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'bundle-stats'</span><span class="token punctuation">,</span>
+    <span class="token function">options</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      startTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">generateBundle</span><span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> bundle</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> fileSizes <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>fileName<span class="token punctuation">,</span> output<span class="token punctuation">]</span> <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>bundle<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>output<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'chunk'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> content <span class="token operator">=</span> output<span class="token punctuation">.</span>code<span class="token punctuation">;</span>
+          <span class="token keyword">const</span> size <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">byteLength</span><span class="token punctuation">(</span>content<span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">const</span> sizeInKB <span class="token operator">=</span> <span class="token punctuation">(</span>size <span class="token operator">/</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          fileSizes<span class="token punctuation">[</span>fileName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sizeInKB<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> KB</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Bundle Stats:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'-------------'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'File Sizes:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fileSizes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'-------------'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">closeBundle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> totalTime <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> startTime<span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Total Bundle Time: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>totalTime<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> ms</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'-------------'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332722-52083">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="export default function bundleStats() {
+  let startTime;
+  return {
+    name: 'bundle-stats',
+    options() {
+      startTime = Date.now();
+    },
+    generateBundle(_, bundle) {
+      const fileSizes = {};
+
+      for (const [fileName, output] of Object.entries(bundle)) {
+        if (output.type === 'chunk') {
+          const content = output.code;
+          const size = Buffer.byteLength(content, 'utf8');
+          const sizeInKB = (size / 1024).toFixed(2);
+
+          fileSizes[fileName] = `${sizeInKB} KB`;
+        }
+      }
+      console.log('Bundle Stats:');
+      console.log('-------------');
+      console.log('File Sizes:');
+      console.log(fileSizes);
+      console.log('-------------');
+    },
+    closeBundle() {
+      const totalTime = Date.now() - startTime;
+      console.log(`Total Bundle Time: ${totalTime} ms`);
+      console.log('-------------');
+    }
+  };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332722-52083" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h4 id="代码压缩"><a href="#代码压缩" class="header-anchor">#</a> 代码压缩</h4> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> minify <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'uglify-js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">uglifyPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'uglify'</span><span class="token punctuation">,</span>
+
+    <span class="token function">renderChunk</span><span class="token punctuation">(</span><span class="token parameter">code</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">minify</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">minify error: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>result<span class="token punctuation">.</span>error<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">code</span><span class="token operator">:</span> result<span class="token punctuation">.</span>code<span class="token punctuation">,</span>
+        <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">mappings</span><span class="token operator">:</span> <span class="token string">''</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1725940332722-27880">成功</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import { minify } from 'uglify-js';
+
+export default function uglifyPlugin() {
+  return {
+    name: 'uglify',
+
+    renderChunk(code) {
+      const result = minify(code);
+      if (result.error) {
+        throw new Error(`minify error: ${result.error}`);
+      }
+      return {
+        code: result.code,
+        map: { mappings: '' }
+      };
+    },
+  };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1725940332722-27880" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">复制代码</button></div></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/advanced/rollup/usePlugin.html" class="prev">
+        使用插件
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.108c1834.js" defer></script><script src="/assets/js/2.dcfe666b.js" defer></script><script src="/assets/js/1.40c2f1c6.js" defer></script><script src="/assets/js/32.4c228f8e.js" defer></script>
+  </body>
+</html>
