@@ -39,6 +39,7 @@ module.exports = {
       {
         text: "工程化进阶",
         items: [
+          { text: 'Rollup', link: '/advanced/rollup/' },
           { text: 'esbuild', link: '/advanced/esbuild/' },
         ]
       },
