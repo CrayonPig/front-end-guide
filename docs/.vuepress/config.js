@@ -41,6 +41,7 @@ module.exports = {
         items: [
           { text: 'Rollup', link: '/advanced/rollup/' },
           { text: 'esbuild', link: '/advanced/esbuild/' },
+          { text: 'Vite', link: '/advanced/vite/' },
         ]
       },
       { text: "代码规范", link: "/guide/" },

@@ -28,6 +28,10 @@ module.exports = {
       ]
     },
     '/advanced/rollup/plugin',
+  ],
+  '/advanced/vite/': [
+    '/advanced/vite/',
+    '/advanced/vite/vs',
   ]
 }
     
