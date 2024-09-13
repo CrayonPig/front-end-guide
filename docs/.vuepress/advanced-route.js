@@ -32,6 +32,7 @@ module.exports = {
   '/advanced/vite/': [
     '/advanced/vite/',
     '/advanced/vite/vs',
+    '/advanced/vite/engines',
   ]
 }
     
