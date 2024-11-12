@@ -1,6 +1,6 @@
 ---
 home: true
-# heroImage: /hero.png
+heroImage: /logo.svg
 heroText: 前端工程化详解
 tagline: 力求打造一份开箱即用的前端工程化方案
 actionText: 快速上手 →

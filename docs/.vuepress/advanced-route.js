@@ -33,6 +33,17 @@ module.exports = {
     '/advanced/vite/',
     '/advanced/vite/vs',
     '/advanced/vite/engines',
+    {
+      title: '使用介绍',
+      collapsable: false, // 可选的, 默认值是 true,
+      sidebarDepth: 1,    // 可选的, 默认值是 1
+      children: [
+        '/advanced/vite/cmd',
+        '/advanced/vite/config',
+        '/advanced/vite/base',
+        '/advanced/vite/vue3',
+      ]
+    },
   ]
 }
     

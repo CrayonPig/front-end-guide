@@ -11,6 +11,12 @@ module.exports = {
   description:
     "前端工程化详解;开箱即用的前端工程化方案;前端代码规范;使用过程中如碰到问题，请到Github进行提问。 https://github.com/CrayonPig/front-end-guide",
   dest: "./dist/",
+  head: [
+    [
+      'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
+      { rel: 'icon', href: 'logo.svg' }
+    ]
+  ],
   plugins: ['@vuepress/medium-zoom'],
   markdown: {
     lineNumbers: true,
